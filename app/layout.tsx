@@ -5,7 +5,7 @@ import CanvasCursor from "@/components/CanvasCursor";
 
 export const metadata = {
   title: "Edi Wicoro",
-  description: "Full Stack Engineer",
+  description: "Edi Wicoro Portfolio",
 };
 export default function RootLayout({
   children,
