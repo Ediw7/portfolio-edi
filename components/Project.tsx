@@ -56,7 +56,7 @@ export default function Projects() {
       {/* HEADER: MEGAH & PREMIUM */}
       <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-black/10 dark:border-white/10 pb-8">
         <div>
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Selected</h2>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Selected<span className="text-red-600">.</span></h2>
           <span className="text-xl md:text-2xl text-black/60 dark:text-white/60 font-light italic tracking-wide">
             Projects & Innovations
           </span>

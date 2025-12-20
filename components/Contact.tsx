@@ -1,82 +1,133 @@
 "use client";
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 
 export default function Contact() {
   const currentYear = new Date().getFullYear();
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-US", { 
+        hour: "2-digit", 
+        minute: "2-digit", 
+        hour12: false, 
+        timeZoneName: "short" 
+      }));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 60000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
+    <footer id="contact" className="relative w-full bg-black text-white px-6 md:px-12 py-20 md:py-32 border-t border-white/5 overflow-hidden">
 
-    <footer id="contact" className="relative w-full bg-black text-white px-6 md:px-24 py-24 border-t border-white/5 overflow-visible">
+      {/* --- BACKGROUND LUXURY GRADIENT (ADJUSTED) --- */}
+      <div className="absolute inset-0 pointer-events-none">
+        
+        {/* 1. Deep Crimson Glow (Naik Dikit & Lebih Halus) */}
+        {/* Posisinya saya naikkan (-bottom-[-10%]) supaya warnanya 'kelihatan sampai atas dikit' */}
+        {/* Opacity diturunkan (opacity-40) supaya 'masih dominan item' */}
+        <div className="absolute -bottom-[10%] -left-[10%] w-[1000px] h-[1000px] bg-red-900/20 rounded-full blur-[180px] mix-blend-screen opacity-40" />
+        
+        {/* 2. Royal Indigo Glow (Top Right) */}
+        <div className="absolute -top-[10%] -right-[10%] w-[800px] h-[800px] bg-indigo-900/15 rounded-full blur-[180px] mix-blend-screen opacity-40" />
 
-      <div className="absolute top-[-300px] inset-x-0 bottom-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-orange-600/20 rounded-full blur-[160px]" />
-        <div className="absolute bottom-0 left-[-10%] w-[600px] h-[600px] bg-purple-600/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-0 right-[-10%] w-[600px] h-[600px] bg-blue-600/20 rounded-full blur-[140px]" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-white/5 rounded-full blur-[100px]" />
+        {/* 3. Center Subtle Light (Opsional: Penyeimbang) */}
+        {/* Sedikit cahaya putih sangat tipis di tengah biar ga terlalu mati */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full blur-[200px] opacity-20" />
+
+        {/* 4. Noise Texture (Matte Finish) */}
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         
-        {/* BAGIAN ATAS: CTA CONTACT */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-32 gap-10">
-          <div className="max-w-2xl">
-            <h2 className="text-6xl md:text-9xl font-bold tracking-tighter uppercase leading-[0.8] mb-8 italic">
-              Let's work <br /> together
+        {/* --- SECTION 1: BIG CTA --- */}
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-24 gap-12 border-b border-white/5 pb-24">
+          <div className="max-w-4xl">
+            <h2 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter uppercase leading-[0.8] mb-8">
+              Let's work <br /> 
+              <span className="text-white/40 italic font-serif">Together</span>
+              <span className="text-red-600 not-italic">.</span>
             </h2>
-            <p className="text-white/40 text-lg md:text-xl max-w-md italic leading-relaxed">
-              I'm currently available for freelance work and full-time positions. 
-              Have a project in mind? Let's get in touch.
+            <p className="text-neutral-400 text-lg md:text-xl max-w-lg leading-relaxed font-light">
+              Currently available for freelance projects and open to full-time opportunities. 
+              Let’s build something strictly <span className="text-white font-medium">premium</span>.
             </p>
           </div>
           
-          <a 
-            href="mailto:ediwicoro26@gmail.com"
-            className="group flex items-center gap-3 bg-white text-black px-12 py-6 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all hover:scale-105 shadow-[0_0_50px_rgba(255,255,255,0.15)]"
-          >
-            Email Me <ArrowUpRight size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </a>
-        </div>
-
-        {/* BAGIAN TENGAH: GRID NAVIGASI (Sesuaikan teks dengan Nelson Lai) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-20 border-t border-white/5 pt-16">
-          <div className="flex flex-col gap-4">
-            <FooterLink label="Home" href="/" />
-            <FooterLink label="project" href="#" />
-            <FooterLink label="About" href="#about" />
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <FooterLink label="Experience" href="#" />
-            <FooterLink label="Award" href="#" />
-            <FooterLink label="Contact" href="#works" />
-          </div>
-
-          <div className="flex flex-col gap-4 invisible md:visible">
-            {/* Kolom kosong untuk spacing seperti referensi */}
-          </div>
-
-          <div className="flex flex-col gap-4">
-            <FooterLink label="Facebook" href="#" />
-            <FooterLink label="Instagram" href="#" />
-            <FooterLink label="GitHub" href="#" />
-          </div>
-        </div>
-
-        {/* BAGIAN BAWAH: COPYRIGHT & STAR */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-10 border-t border-white/5 gap-8">
-          <div className="space-y-4">
-            <div className="flex gap-6 text-[10px] font-bold text-white/40 uppercase tracking-[0.2em]">
-              <a href="#" className="hover:text-white transition">Terms of Service</a>
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
+          <div className="flex flex-col gap-6">
+            <a 
+              href="mailto:ediwicoro26@gmail.com"
+              className="group relative flex items-center gap-4 bg-white text-black px-10 py-5 rounded-full font-bold text-xs tracking-[0.2em] uppercase transition-all hover:bg-neutral-200 shadow-[0_0_40px_rgba(255,255,255,0.1)]"
+            >
+              <span>Send an Email</span>
+              <div className="w-8 h-8 bg-black text-white rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
+                 <ArrowUpRight size={14} />
+              </div>
+            </a>
+            <div className="text-right">
+                <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Local Time</p>
+                <p className="text-sm font-mono text-white/70">{time}</p>
             </div>
-            <p className="text-sm text-white/20 font-medium tracking-tight">
-              © {currentYear} Edi Wicoro 
-            </p>
+          </div>
+        </div>
+
+        {/* --- SECTION 2: LINKS GRID --- */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-20">
+          
+          <div className="flex flex-col gap-4">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-2">Sitemap</h4>
+            <FooterLink label="Home" href="#home" />
+            <FooterLink label="About" href="#about" />
+            <FooterLink label="Projects" href="#projects" />
           </div>
 
-        
+          <div className="flex flex-col gap-4">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-2">Socials</h4>
+            <FooterLink label="LinkedIn" href="https://linkedin.com/in/ediwicoro" />
+            <FooterLink label="GitHub" href="https://github.com/ediwicoro" />
+            <FooterLink label="Instagram" href="https://instagram.com/ediwicoro" />
+          </div>
+
+          <div className="hidden md:block"></div>
+
+          <div className="flex flex-col justify-end items-start md:items-end">
+             <button 
+               onClick={scrollToTop}
+               className="group flex flex-col items-center gap-2 text-white/30 hover:text-white transition-colors"
+             >
+                <span className="text-[10px] uppercase tracking-widest font-bold">Back to Top</span>
+                <div className="w-10 h-10 border border-white/20 rounded-full flex items-center justify-center group-hover:border-white group-hover:-translate-y-2 transition-all duration-300">
+                    <ArrowUp size={16} />
+                </div>
+             </button>
+          </div>
         </div>
+
+        {/* --- SECTION 3: BOTTOM BAR --- */}
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/5 gap-4">
+          <p className="text-[10px] text-white/20 font-bold uppercase tracking-widest">
+            © {currentYear} Edi Wicoro. All Rights Reserved.
+          </p>
+          
+          <div className="flex gap-6">
+            <a href="#" className="text-[10px] text-white/20 font-bold uppercase tracking-widest hover:text-white transition-colors">
+                Privacy Policy
+            </a>
+            <a href="#" className="text-[10px] text-white/20 font-bold uppercase tracking-widest hover:text-white transition-colors">
+                Terms & Conditions
+            </a>
+          </div>
+        </div>
+
       </div>
     </footer>
   );
@@ -86,9 +137,16 @@ function FooterLink({ label, href }: { label: string, href: string }) {
   return (
     <a 
       href={href} 
-      className="text-sm font-medium text-white/30 hover:text-white transition-colors duration-300 w-fit"
+      target={href.startsWith("http") ? "_blank" : "_self"}
+      className="group flex items-center gap-2 w-fit"
     >
-      {label}
+      <span className="text-xs font-bold uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors duration-300">
+        {label}
+      </span>
+      <ArrowUpRight 
+        size={12} 
+        className="text-white opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" 
+      />
     </a>
   );
 }
