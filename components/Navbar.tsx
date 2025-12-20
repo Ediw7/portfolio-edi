@@ -77,20 +77,7 @@ export default function Navbar() {
               My CV
             </a>
 
-            <div className="h-4 w-[1px] bg-white/10 hidden sm:block" /> 
-
-            {/* 4. DARK/LIGHT MODE TOGGLE */}
-            <button 
-              onClick={toggleTheme}
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="Toggle Theme"
-            >
-              {isDark ? (
-                <Sun size={18} /> // Muncul Matahari kalau sedang Dark Mode
-              ) : (
-                <Moon size={18} /> // Muncul Bulan kalau sedang Light Mode
-              )}
-            </button>
+           
           </div>
 
         </div>
