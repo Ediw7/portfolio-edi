@@ -7,7 +7,7 @@ const awards = [
   {
     id: 1,
     year: "2025",
-    title: "PPK ORMAWA Grant",
+    title: "PPK ORMAWA Program Grant",
     organization: "Ministry of Education",
     description: "Secured funding for village digitalization and branding development."
   },

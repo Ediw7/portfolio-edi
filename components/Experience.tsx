@@ -8,7 +8,7 @@ const experiences = [
   {
     id: 1,
     company: "Universitas Diponegoro",
-    logo: "/logos/undip.png", 
+    logo: "/undip.png", 
     role: "Mobile Programming Lab Assistant",
     period: "2025",
     points: [
@@ -20,7 +20,7 @@ const experiences = [
   {
     id: 2,
     company: "Universitas Diponegoro",
-    logo: "/logos/undip.png", 
+    logo: "/undip.png", 
     role: "Digital Systems Lab Assistant",
     period: "2024 - 2025",
     points: [
@@ -32,7 +32,7 @@ const experiences = [
   {
     id: 3,
     company: "PT SUCOFINDO",
-    logo: "/logos/sucofindo.png", 
+    logo: "/suco.png", 
     role: "Web Developer Intern",
     period: "2024",
     points: [
@@ -45,7 +45,7 @@ const experiences = [
   {
     id: 4,
     company: "Higenncy",
-    logo: "/logos/higenncy.png", 
+    logo: "/higen.jpeg", 
     role: "Graphic Design Intern",
     period: "2023", 
     points: [
@@ -57,7 +57,7 @@ const experiences = [
   {
     id: 5,
     company: "Higenncy (Ministry of Finance Project)",
-    logo: "/logos/higenncy.png", 
+    logo: "/higen.jpeg", 
     role: "Email Marketing Design Intern",
     period: "2023",
     points: [
@@ -69,7 +69,7 @@ const experiences = [
   {
     id: 6,
     company: "PT Digital Investa Indonesia",
-    logo: "/logos/dii.png", 
+    logo: "/digi.png", 
     role: "Graphic Design Intern",
     period: "2022",
     points: [
@@ -143,12 +143,13 @@ export default function Experience() {
                     
                     <div className="flex items-start md:items-center gap-6 md:gap-8">
                    
-                        <div className="relative w-16 h-16 bg-white dark:bg-black p-3 rounded-2xl border border-black/5 dark:border-white/5 flex-shrink-0">
+                       <div className="relative w-16 h-16 bg-white p-2 rounded-2xl border border-black/5 dark:border-white/5 flex-shrink-0 overflow-hidden shadow-sm">
+  
                             <Image 
-                              src={exp.logo} 
-                              alt={exp.company}
-                              fill
-                              className="object-contain"
+                            src={exp.logo} 
+                            alt={exp.company}
+                            fill
+                            className="object-contain" 
                             />
                         </div>
 
