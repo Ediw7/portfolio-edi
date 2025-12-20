@@ -53,7 +53,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-32 px-4 md:px-8 max-w-7xl mx-auto bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       
-      {/* HEADER: MEGAH & PREMIUM */}
+    
       <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-black/10 dark:border-white/10 pb-8">
         <div>
           <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Selected<span className="text-red-600">.</span></h2>
@@ -67,26 +67,35 @@ export default function Projects() {
         </div>
       </div>
 
-      {/* GRID LAYOUT */}
+   
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {projects.map((project, i) => (
           <ProjectCard key={i} {...project} />
         ))}
       </div>
 
-      {/* --- TOMBOL SEE DESIGN PROJECT --- */}
+     {/* --- TOMBOL SEE DESIGN PROJECT (RED EDITION) --- */}
       <div className="mt-20 flex justify-center">
         <a 
           href="https://drive.google.com/file/d/16_M-3ucgVcpepbBtYMI7neLaeBInIuJ5/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-all duration-300 bg-transparent"
+          className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full 
+                     bg-red-600 text-white border border-red-600
+                     hover:bg-red-700 hover:scale-105 
+                     shadow-[0_0_20px_rgba(220,38,38,0.3)] hover:shadow-[0_0_40px_rgba(220,38,38,0.6)]
+                     transition-all duration-300"
         >
-          <Palette size={18} className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors" />
-          <span className="text-sm font-bold uppercase tracking-widest text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white transition-colors">
+          {/* Icon Palette */}
+          <Palette size={18} className="text-white group-hover:rotate-12 transition-transform duration-300" />
+          
+          {/* Teks */}
+          <span className="text-sm font-bold uppercase tracking-widest text-white">
             See Design Projects
           </span>
-          <ArrowUpRight size={16} className="text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          
+          {/* Panah */}
+          <ArrowUpRight size={16} className="text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
         </a>
       </div>
 
