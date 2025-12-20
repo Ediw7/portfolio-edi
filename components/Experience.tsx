@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Calendar, ChevronDown } from "lucide-react";
+import { ChevronDown, Briefcase } from "lucide-react";
 
 const experiences = [
   {
@@ -31,7 +31,7 @@ const experiences = [
   },
   {
     id: 3,
-    company: "PT SUCOFINDO (Semarang)",
+    company: "PT SUCOFINDO",
     logo: "/logos/sucofindo.png", 
     role: "Web Developer Intern",
     period: "2024",
@@ -56,7 +56,7 @@ const experiences = [
   },
   {
     id: 5,
-    company: "Higenncy (Kemenkeu Project)",
+    company: "Higenncy (Ministry of Finance Project)",
     logo: "/logos/higenncy.png", 
     role: "Email Marketing Design Intern",
     period: "2023",
@@ -84,18 +84,24 @@ export default function Experience() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-24 px-4 md:px-8 max-w-5xl mx-auto bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300">
+    <section id="experience" className="py-32 px-4 md:px-8 max-w-7xl mx-auto bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       
-      {/* Header */}
-      <div className="mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Work <span className="text-neutral-500 dark:text-neutral-600">Experience</span></h2>
-        <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl">
-          My professional journey and career milestones.
-        </p>
+      {/* HEADER: EXPERIENCE */}
+      <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-black/5 dark:border-white/5 pb-8">
+        <div>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Experience</h2>
+          <span className="text-xl md:text-2xl text-black/60 dark:text-white/60 font-light italic tracking-wide">
+            & Professional Journey
+          </span>
+        </div>
+        <div className="hidden md:flex items-center gap-2 text-sm font-mono text-black/50 dark:text-white/50 uppercase tracking-widest mt-4 md:mt-0">
+          <Briefcase size={16} />
+          <span>Timeline</span>
+        </div>
       </div>
 
       {/* TIMELINE CONTAINER */}
-      <div className="relative border-l-2 border-neutral-200 dark:border-neutral-800 ml-3 md:ml-6 space-y-8">
+      <div className="relative border-l border-black/5 dark:border-white/5 ml-3 md:ml-6 space-y-12">
         
         {experiences.map((exp, index) => {
           const isOpen = expanded === exp.id;
@@ -107,33 +113,39 @@ export default function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative pl-8 md:pl-12"
+              className="relative pl-8 md:pl-16"
             >
               {/* TIMELINE DOT */}
-              <span className={`absolute -left-[9px] top-8 w-4 h-4 rounded-full border-4 border-white dark:border-black ring-1 transition-colors duration-300 ${
+              <span className={`absolute -left-[5px] top-10 w-2.5 h-2.5 rounded-full ring-4 ring-white dark:ring-black transition-colors duration-500 ${
                   isOpen 
-                  ? "bg-black dark:bg-white ring-black dark:ring-white" 
-                  : "bg-neutral-200 dark:bg-neutral-800 ring-neutral-300 dark:ring-neutral-700"
+                  ? "bg-black dark:bg-white scale-125" 
+                  : "bg-black/10 dark:bg-white/10"
               }`}></span>
 
-              {/* 1. PERIODE */}
-              <div className="flex items-center gap-2 text-xs font-mono font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-2">
-                 <Calendar size={12} />
+              {/* PERIODE LABEL */}
+              <div className="absolute top-0 left-8 md:left-16 text-xs font-mono font-bold text-black/40 dark:text-white/40 uppercase tracking-widest mb-2">
                  {exp.period}
               </div>
 
-              {/* 2. CARD INTERAKTIF (BUTTON) */}
+              {/* CARD BUTTON (BORDER SUPER TIPIS DI SINI) */}
               <button 
                 onClick={() => setExpanded(isOpen ? null : exp.id)}
-                // PERUBAHAN DISINI: dark:bg-black (Hitam Pekat)
-                className="w-full text-left bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-white/10 rounded-2xl hover:border-neutral-300 dark:hover:border-white/30 transition-all duration-300 overflow-hidden group"
+                className={`w-full text-left mt-6 group relative overflow-hidden transition-all duration-500 rounded-3xl border ${
+                    isOpen 
+                    // SAAT DIBUKA: Border transparansi tinggi (terlihat tipis & elegan)
+                    // border-black/40 jauh lebih tipis secara visual daripada border-black solid
+                    ? "bg-white dark:bg-black border-black/40 dark:border-white/40 shadow-2xl" 
+                    // SAAT DITUTUP: Sangat tipis (hampir invisible)
+                    : "bg-white dark:bg-black border-black/5 dark:border-white/5 hover:border-black/20 dark:hover:border-white/20"
+                }`}
               >
                  
                  {/* HEADER CARD */}
-                 <div className="p-6 md:p-8 flex items-center justify-between">
-                    <div className="flex items-center gap-4 md:gap-6">
-                        {/* Logo Container */}
-                        <div className="relative w-12 h-12 bg-white dark:bg-neutral-900 p-2 rounded-xl border border-neutral-200 dark:border-white/10 flex-shrink-0">
+                 <div className="p-6 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    
+                    <div className="flex items-start md:items-center gap-6 md:gap-8">
+                        {/* Logo Box */}
+                        <div className="relative w-16 h-16 bg-white dark:bg-black p-3 rounded-2xl border border-black/5 dark:border-white/5 flex-shrink-0">
                             <Image 
                               src={exp.logo} 
                               alt={exp.company}
@@ -141,47 +153,67 @@ export default function Experience() {
                               className="object-contain"
                             />
                         </div>
-                        {/* Teks */}
+
+                        {/* Teks Utama */}
                         <div>
-                            <h3 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-white group-hover:underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">
+                            <h3 className="text-xl md:text-3xl font-bold text-black dark:text-white leading-tight">
                               {exp.role}
                             </h3>
-                            <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 font-medium mt-1">
+                            <p className="text-sm md:text-lg text-black/60 dark:text-white/60 font-medium mt-1">
                               {exp.company}
                             </p>
                         </div>
                     </div>
 
                     {/* Chevron Icon */}
-                    <div className={`p-2 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 transition-transform duration-300 ${isOpen ? "rotate-180 bg-neutral-200 dark:bg-white/20" : ""}`}>
-                        <ChevronDown size={20} className="text-neutral-500 dark:text-white" />
+                    <div className={`hidden md:flex w-12 h-12 rounded-full border border-black/5 dark:border-white/5 items-center justify-center transition-all duration-500 ${
+                        isOpen 
+                        ? "rotate-180 bg-black text-white dark:bg-white dark:text-black border-transparent" 
+                        : "bg-transparent text-black/30 dark:text-white/30 group-hover:border-black/20 dark:group-hover:border-white/20 group-hover:text-black dark:group-hover:text-white"
+                    }`}>
+                        <ChevronDown size={20} />
                     </div>
                  </div>
 
-                 {/* BODY CARD */}
+                 {/* EXPANDABLE CONTENT */}
                  <AnimatePresence>
                     {isOpen && (
                         <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                         >
-                           <div className="px-6 md:px-8 pb-8 pt-0 border-t border-neutral-200 dark:border-white/10 mt-2">
-                              {/* Points */}
-                              <ul className="list-disc list-outside ml-4 space-y-3 text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 mt-6">
-                                {exp.points.map((point, idx) => (
-                                  <li key={idx}>{point}</li>
-                                ))}
-                              </ul>
+                           <div className="px-6 md:px-10 pb-10 pt-0">
+                              {/* Garis Pemisah Tipis */}
+                              <div className="h-px w-full bg-black/5 dark:bg-white/5 mb-8" />
+                              
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                  {/* Kolom Kiri: Deskripsi */}
+                                  <div className="md:col-span-2">
+                                      <h4 className="text-xs font-bold uppercase tracking-widest text-black/30 dark:text-white/30 mb-4">Key Responsibilities</h4>
+                                      <ul className="space-y-3">
+                                        {exp.points.map((point, idx) => (
+                                          <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-black/70 dark:text-white/70 leading-relaxed">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-black/50 dark:bg-white/50 flex-shrink-0" />
+                                            {point}
+                                          </li>
+                                        ))}
+                                      </ul>
+                                  </div>
 
-                              {/* Tech Stack */}
-                              <div className="flex flex-wrap gap-2">
-                                {exp.tech.map((t) => (
-                                  <span key={t} className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-md">
-                                    {t}
-                                  </span>
-                                ))}
+                                  {/* Kolom Kanan: Tech Stack */}
+                                  <div>
+                                      <h4 className="text-xs font-bold uppercase tracking-widest text-black/30 dark:text-white/30 mb-4">Technologies</h4>
+                                      <div className="flex flex-wrap gap-2">
+                                        {exp.tech.map((t) => (
+                                          // TAG STYLE: Outline Sangat Tipis
+                                          <span key={t} className="px-3 py-1.5 text-xs font-medium border border-black/10 dark:border-white/10 text-black/70 dark:text-white/70 rounded-lg">
+                                            {t}
+                                          </span>
+                                        ))}
+                                      </div>
+                                  </div>
                               </div>
                            </div>
                         </motion.div>

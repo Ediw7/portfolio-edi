@@ -43,7 +43,7 @@ export default function Awards() {
       {/* Header Besar & Mewah */}
       <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-neutral-200 dark:border-white/10 pb-8">
         <div>
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Honors</h2>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Awards</h2>
           <span className="text-xl md:text-2xl text-neutral-400 dark:text-neutral-500 font-light italic tracking-wide">
             & Achievements
           </span>
