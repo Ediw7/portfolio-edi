@@ -6,11 +6,9 @@ export default function Contact() {
   const currentYear = new Date().getFullYear();
 
   return (
-    // Kita gunakan overflow-visible agar gradasi bisa memancar ke section di atasnya
+
     <footer id="contact" className="relative w-full bg-black text-white px-6 md:px-24 py-24 border-t border-white/5 overflow-visible">
-      
-      {/* --- EFEK GRADASI MESH (DIPERBAIKI) --- */}
-      {/* Container gradasi dibuat absolute dan diletakkan lebih tinggi (top-[-300px]) */}
+
       <div className="absolute top-[-300px] inset-x-0 bottom-0 pointer-events-none z-0 overflow-hidden">
         {/* Glow Utama di Tengah (Oranye/Kuning) */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-orange-600/20 rounded-full blur-[160px]" />

@@ -55,7 +55,7 @@ export default function Projects() {
       
       {/* HEADER SECTION */}
       <div className="mb-12 md:mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Selected Projects</h2>
+        <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Selected <span className="text-neutral-600">Projects</span></h2>
         <p className="text-neutral-400 max-w-xl text-sm md:text-base leading-relaxed">
           A showcase of technical explorations and deployed applications.
         </p>
@@ -79,7 +79,7 @@ function ProjectCard({ title, tech, desc, image, link }: any) {
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ y: -4 }}
-      className="group flex flex-col w-full bg-[#0a0a0a] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
+      className="group flex flex-col w-full bg-[#00000] border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-300"
     >
       
       {/* BAGIAN GAMBAR */}

@@ -5,78 +5,86 @@ import { Trophy, ArrowUpRight } from "lucide-react";
 
 const awards = [
   {
-    title: "Best Blockchain Innovation",
-    org: "ETH Global - Hackathon",
+    id: 1,
+    year: "2025",
+    title: "PPK ORMAWA Funding Grant",
+    organization: "Ministry of Education (Kemdikbud)",
+    description: "Secured funding for village digitalization: Developed a village website and created branding/packaging for local MSMEs."
+  },
+  {
+    id: 2,
+    year: "2025",
+    title: "3rd Place Web Development",
+    organization: "Silogy Expo",
+    description: "National level web development competition creating innovative solutions."
+  },
+  {
+    id: 3,
+    year: "2025",
+    title: "Finalist Web Design",
+    organization: "Techomfest",
+    description: "Competed in UI/UX design challenges focusing on user-centric interfaces."
+  },
+  {
+    id: 4,
     year: "2024",
-    link: "#"
-  },
-  {
-    title: "Outstanding Frontend Developer",
-    org: "Web Excellence Awards",
-    year: "2023",
-    link: "#"
-  },
-  {
-    title: "Top 10 Fullstack Contributors",
-    org: "Open Source Fest",
-    year: "2022",
-    link: "#"
-  },
-  {
-    title: "UI/UX Design Honorable Mention",
-    org: "Awwwards Nominee",
-    year: "2021",
-    link: "#"
+    title: "Finalist Web Design",
+    organization: "Techomfest",
+    description: "Selected as a finalist in a national web design competition."
   }
 ];
 
 export default function Awards() {
   return (
-    <section id="awards" className="py-24 px-6 max-w-4xl mx-auto bg-black text-white">
-      <div className="flex items-center gap-4 mb-16">
-        <div className="p-3 bg-white/5 rounded-2xl border border-white/10">
-          <Trophy size={20} className="text-white/60" />
-        </div>
-        <h2 className="text-4xl font-bold italic uppercase tracking-tighter">Awards</h2>
+    <section id="awards" className="py-24 px-4 md:px-8 max-w-5xl mx-auto bg-black text-white">
+      
+      {/* Header Minimalist */}
+      <div className="mb-12 border-b border-neutral-800 pb-4 flex items-center justify-between">
+        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Awards & Achievements</h2>
+        <Trophy size={24} className="text-neutral-600" />
       </div>
 
-      <div className="border-t border-white/10">
-        {awards.map((award, index) => (
-          <motion.a
-            key={index}
-            href={award.link}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      {/* List Layout */}
+      <div className="flex flex-col">
+        {awards.map((item, index) => (
+          <motion.div 
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1, duration: 0.5 }}
             viewport={{ once: true }}
-            className="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-white/10 hover:bg-white/[0.02] transition-all px-4"
+            className="group border-b border-neutral-800 last:border-none py-8 flex flex-col md:flex-row gap-4 md:gap-12 hover:bg-neutral-900/20 transition-colors px-2 rounded-lg"
           >
-            <div className="flex flex-col gap-1">
-              <span className="text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase italic">
-                {award.org}
-              </span>
-              <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:translate-x-2 transition-transform duration-500">
-                {award.title}
-              </h3>
+            
+            {/* Kolom Tahun */}
+            <div className="md:w-32 flex-shrink-0">
+               <span className="text-sm font-mono text-neutral-500 font-bold tracking-widest border border-neutral-800 px-2 py-1 rounded">
+                 {item.year}
+               </span>
             </div>
 
-            <div className="flex items-center justify-between md:justify-end gap-10 mt-4 md:mt-0">
-              <span className="font-mono text-sm text-white/20 group-hover:text-white transition-colors">
-                {award.year}
-              </span>
-              <div className="p-2 border border-white/10 rounded-full opacity-0 group-hover:opacity-100 group-hover:rotate-45 transition-all duration-500">
-                <ArrowUpRight size={18} />
-              </div>
+            {/* Kolom Konten */}
+            <div className="flex-grow">
+               <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-xl font-bold text-white group-hover:text-red-500 transition-colors">
+                    {item.title}
+                  </h3>
+                  <ArrowUpRight size={18} className="text-neutral-600 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+               </div>
+               
+               <p className="text-sm font-medium text-neutral-400 uppercase tracking-wide mb-3">
+                 {item.organization}
+               </p>
+               
+               <p className="text-sm text-neutral-500 leading-relaxed max-w-2xl">
+                 {item.description}
+               </p>
             </div>
-          </motion.a>
+
+          </motion.div>
         ))}
       </div>
 
-      {/* Teks dekorasi di bawah */}
-      <div className="mt-12 text-center opacity-10">
-        <p className="text-[8vw] font-black uppercase leading-none tracking-tighter select-none">
-          Recognition
-        </p>
-      </div>
     </section>
   );
 }
