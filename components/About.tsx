@@ -30,7 +30,7 @@ export default function About() {
                 <h4 className="text-xl font-medium text-white">Universitas Diponegoro</h4>
                 <div className="flex justify-between items-center mt-1 max-w-xs">
                     <p className="text-neutral-500 text-sm">Computer Engineering</p>
-                    <span className="text-xs font-mono text-red-500 bg-red-500/10 px-2 py-0.5 rounded">3.85 GPA</span>
+                    
                 </div>
             </div>
 
@@ -118,10 +118,10 @@ export default function About() {
         <div className="md:col-span-1 bg-[#000000] border border-white/10 rounded-[2rem] p-6 flex flex-col justify-between hover:border-white/20 transition-colors">
             <div className="flex items-center gap-2 text-neutral-500">
                 <GraduationCap size={16} />
-                <span className="text-[10px] font-bold uppercase tracking-widest">GPA</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest">belum tau</span>
             </div>
             <div>
-                <span className="text-4xl lg:text-5xl font-medium tracking-tighter text-white">3.85</span>
+                <span className="text-4xl lg:text-5xl font-medium tracking-tighter text-white">xx</span>
             </div>
         </div>
 

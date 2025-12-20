@@ -1,14 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Plus, Minus } from "lucide-react";
-import Image from "next/image"; // IMPORT NEXT IMAGE
+import Image from "next/image";
+import { Calendar, ChevronDown } from "lucide-react";
 
 const experiences = [
   {
     id: 1,
     company: "Universitas Diponegoro",
-    // GANTI PATH INI SESUAI NAMA FILE LOGO ANDA DI FOLDER PUBLIC/LOGOS
     logo: "/logos/undip.png", 
     role: "Mobile Programming Lab Assistant",
     period: "2025",
@@ -21,7 +20,7 @@ const experiences = [
   {
     id: 2,
     company: "Universitas Diponegoro",
-    logo: "/logos/undip.png", // Gunakan logo yang sama jika perusahaannya sama
+    logo: "/logos/undip.png", 
     role: "Digital Systems Lab Assistant",
     period: "2024 - 2025",
     points: [
@@ -33,7 +32,7 @@ const experiences = [
   {
     id: 3,
     company: "PT SUCOFINDO (Semarang)",
-    logo: "/logos/sucofindo.png", // Pastikan file ada di public/logos/
+    logo: "/logos/sucofindo.png", 
     role: "Web Developer Intern",
     period: "2024",
     points: [
@@ -46,7 +45,7 @@ const experiences = [
   {
     id: 4,
     company: "Higenncy",
-    logo: "/logos/higenncy.png", // Pastikan file ada di public/logos/
+    logo: "/logos/higenncy.png", 
     role: "Graphic Design Intern",
     period: "2023", 
     points: [
@@ -57,7 +56,7 @@ const experiences = [
   },
   {
     id: 5,
-    company: "Higenncy (Ministry of Finance Project)",
+    company: "Higenncy (Kemenkeu Project)",
     logo: "/logos/higenncy.png", 
     role: "Email Marketing Design Intern",
     period: "2023",
@@ -70,7 +69,7 @@ const experiences = [
   {
     id: 6,
     company: "PT Digital Investa Indonesia",
-    logo: "/logos/dii.png", // Ganti dengan nama file yang sesuai
+    logo: "/logos/dii.png", 
     role: "Graphic Design Intern",
     period: "2022",
     points: [
@@ -85,93 +84,112 @@ export default function Experience() {
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <section id="experience" className="py-24 px-4 md:px-8 max-w-5xl mx-auto bg-black text-white">
+    <section id="experience" className="py-24 px-4 md:px-8 max-w-5xl mx-auto bg-white dark:bg-black text-neutral-900 dark:text-white transition-colors duration-300">
       
-      {/* Header Simple */}
-      <div className="mb-16 border-b border-neutral-800 pb-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Experience</h2>
+      {/* Header */}
+      <div className="mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">Work <span className="text-neutral-500 dark:text-neutral-600">Experience</span></h2>
+        <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl">
+          My professional journey and career milestones.
+        </p>
       </div>
 
-      <div className="flex flex-col">
-        {experiences.map((exp) => {
+      {/* TIMELINE CONTAINER */}
+      <div className="relative border-l-2 border-neutral-200 dark:border-neutral-800 ml-3 md:ml-6 space-y-8">
+        
+        {experiences.map((exp, index) => {
           const isOpen = expanded === exp.id;
 
           return (
-            <div 
-              key={exp.id} 
-              className="group border-b border-neutral-800 last:border-none"
+            <motion.div 
+              key={exp.id}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative pl-8 md:pl-12"
             >
+              {/* TIMELINE DOT */}
+              <span className={`absolute -left-[9px] top-8 w-4 h-4 rounded-full border-4 border-white dark:border-black ring-1 transition-colors duration-300 ${
+                  isOpen 
+                  ? "bg-black dark:bg-white ring-black dark:ring-white" 
+                  : "bg-neutral-200 dark:bg-neutral-800 ring-neutral-300 dark:ring-neutral-700"
+              }`}></span>
+
+              {/* 1. PERIODE */}
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-neutral-400 dark:text-neutral-500 uppercase tracking-widest mb-2">
+                 <Calendar size={12} />
+                 {exp.period}
+              </div>
+
+              {/* 2. CARD INTERAKTIF (BUTTON) */}
               <button 
                 onClick={() => setExpanded(isOpen ? null : exp.id)}
-                className="w-full py-6 md:py-8 flex items-start justify-between text-left group-hover:bg-neutral-900/30 transition-colors duration-300 px-2 rounded-lg"
+                // PERUBAHAN DISINI: dark:bg-black (Hitam Pekat)
+                className="w-full text-left bg-neutral-50 dark:bg-black border border-neutral-200 dark:border-white/10 rounded-2xl hover:border-neutral-300 dark:hover:border-white/30 transition-all duration-300 overflow-hidden group"
               >
-                {/* CONTAINER UTAMA KIRI */}
-                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 flex-1">
-                  
-                  {/* 1. TAHUN/PERIODE */}
-                  <span className="text-sm font-mono text-neutral-500 w-28 pt-1 flex-shrink-0">{exp.period}</span>
-                  
-                  {/* CONTAINER LOGO & TEKS */}
-                  <div className="flex items-center gap-4 flex-1">
-                      {/* 2. LOGO PERUSAHAAN (BARU DITAMBAHKAN) */}
-                      <div className="relative w-12 h-12 flex-shrink-0 bg-white/5 p-2 rounded-lg border border-white/10 overflow-hidden">
-                          <Image 
-                            src={exp.logo} 
-                            alt={`${exp.company} logo`}
-                            fill
-                            className="object-contain" // Agar logo tidak gepeng
-                          />
-                      </div>
-
-                      {/* 3. ROLE & COMPANY TEXT */}
-                      <div>
-                        <h3 className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? 'text-white' : 'text-neutral-300 group-hover:text-white'}`}>
-                          {exp.role}
-                        </h3>
-                        <p className="text-neutral-500 text-sm mt-0.5">{exp.company}</p>
-                      </div>
-                  </div>
-
-                </div>
-
-                {/* Icon Toggle (+ / -) */}
-                <div className="ml-4 mt-2 md:mt-0 text-neutral-500 group-hover:text-white transition-colors">
-                  {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-                </div>
-              </button>
-
-              {/* Content Accordion */}
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    {/* Padding kiri disesuaikan agar sejajar dengan teks di atas (melewati logo) */}
-                    <div className="pl-4 md:pl-[11.5rem] pb-8 pr-4 text-neutral-400">
-                      {/* List Jobdesk */}
-                      <ul className="list-disc list-outside ml-4 space-y-2 mb-6 text-sm leading-relaxed">
-                        {exp.points.map((point, idx) => (
-                          <li key={idx}>{point}</li>
-                        ))}
-                      </ul>
-
-                      {/* Tech Stack Tags */}
-                      <div className="flex flex-wrap gap-2">
-                        {exp.tech.map((t) => (
-                          <span key={t} className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 border border-neutral-800 rounded text-neutral-500">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
+                 
+                 {/* HEADER CARD */}
+                 <div className="p-6 md:p-8 flex items-center justify-between">
+                    <div className="flex items-center gap-4 md:gap-6">
+                        {/* Logo Container */}
+                        <div className="relative w-12 h-12 bg-white dark:bg-neutral-900 p-2 rounded-xl border border-neutral-200 dark:border-white/10 flex-shrink-0">
+                            <Image 
+                              src={exp.logo} 
+                              alt={exp.company}
+                              fill
+                              className="object-contain"
+                            />
+                        </div>
+                        {/* Teks */}
+                        <div>
+                            <h3 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-white group-hover:underline decoration-neutral-300 dark:decoration-neutral-700 underline-offset-4">
+                              {exp.role}
+                            </h3>
+                            <p className="text-sm md:text-base text-neutral-600 dark:text-neutral-400 font-medium mt-1">
+                              {exp.company}
+                            </p>
+                        </div>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+
+                    {/* Chevron Icon */}
+                    <div className={`p-2 rounded-full bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 transition-transform duration-300 ${isOpen ? "rotate-180 bg-neutral-200 dark:bg-white/20" : ""}`}>
+                        <ChevronDown size={20} className="text-neutral-500 dark:text-white" />
+                    </div>
+                 </div>
+
+                 {/* BODY CARD */}
+                 <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                        >
+                           <div className="px-6 md:px-8 pb-8 pt-0 border-t border-neutral-200 dark:border-white/10 mt-2">
+                              {/* Points */}
+                              <ul className="list-disc list-outside ml-4 space-y-3 text-sm md:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 mt-6">
+                                {exp.points.map((point, idx) => (
+                                  <li key={idx}>{point}</li>
+                                ))}
+                              </ul>
+
+                              {/* Tech Stack */}
+                              <div className="flex flex-wrap gap-2">
+                                {exp.tech.map((t) => (
+                                  <span key={t} className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-neutral-500 dark:text-neutral-400 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-md">
+                                    {t}
+                                  </span>
+                                ))}
+                              </div>
+                           </div>
+                        </motion.div>
+                    )}
+                 </AnimatePresence>
+
+              </button>
+            </motion.div>
           );
         })}
       </div>
