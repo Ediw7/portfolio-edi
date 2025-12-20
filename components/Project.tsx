@@ -114,17 +114,16 @@ function ProjectCard({ title, tech, desc, image, link }: any) {
           src={image}
           alt={title}
           fill
-          // PERBAIKAN LOGIKA WARNA (MOBILE VS DESKTOP)
+          // HAPUS LOGIKA GRAYSCALE
+          // Gambar selalu berwarna (grayscale-0) dan hanya ada efek zoom saat hover
           className="object-cover transition-all duration-700 
-                     grayscale-0 md:grayscale             /* Mobile: Warna, Desktop: BW */
-                     md:group-hover:grayscale-0           /* Desktop Hover: Jadi Warna */
                      scale-100 group-hover:scale-110"
         />
         
-        {/* Overlay hitam tipis (Hanya muncul di Desktop saat diam, biar teks kontras kalau gambar terang) */}
-        <div className="hidden md:block absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" />
+        {/* Overlay hitam tipis dihapus saja karena gambar sudah berwarna & jelas */}
+        {/* <div className="hidden md:block absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" /> */}
         
-        {/* Icon Panah Pojok (Selalu muncul di mobile, transparan di desktop) */}
+        {/* Icon Panah Pojok (Tetap muncul saat hover di desktop agar interaktif) */}
         <div className="absolute top-4 right-4 bg-white dark:bg-black p-3 rounded-full border border-black/10 dark:border-white/10 
                         opacity-100 md:opacity-0 md:translate-y-2 
                         md:group-hover:opacity-100 md:group-hover:translate-y-0 
