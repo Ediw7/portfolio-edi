@@ -59,37 +59,48 @@ export default function About() {
         </div>
       </div>
 
-      {/* BENTO GRID */}
+    
       <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[240px]">
-        
-        {/* MAP CARD */}
+       
         <div className="md:col-span-4 relative bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[2rem] overflow-hidden group">
+          
+         
           <div className="absolute top-6 left-6 z-20 flex items-center gap-3">
              <div className="bg-white/90 dark:bg-black/90 backdrop-blur-md px-4 py-2 rounded-full border border-black/10 dark:border-white/10 flex items-center gap-2 shadow-xl">
                 <MapPin size={14} className="text-red-600 fill-red-600" />
-                <span className="text-xs font-bold tracking-widest uppercase text-black dark:text-white">Semarang, ID</span>
+                <span className="text-xs font-bold tracking-widest uppercase text-black dark:text-white">Semarang, Central Java</span>
              </div>
           </div>
       
+        
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center pointer-events-none">
-             <div className="w-3 h-3 bg-red-600 rounded-full shadow-[0_0_15px_rgba(220,38,38,1)] relative z-10" />
-             <div className="absolute w-12 h-12 bg-red-600/20 rounded-full animate-ping" />
-             <div className="absolute w-32 h-32 border border-red-600/10 rounded-full" />
+     
+             <div className="w-3 h-3 bg-red-600 rounded-full shadow-[0_0_20px_rgba(220,38,38,1)] relative z-10" />
+           
+             <div className="absolute w-12 h-12 bg-red-600/30 rounded-full animate-ping" />
+            
+             <div className="absolute w-32 h-32 border border-red-600/20 rounded-full animate-pulse" />
+             <div className="absolute w-96 h-96 border border-red-600/5 rounded-full" />
           </div>
         
+   
           <div className="absolute inset-0 w-full h-full pointer-events-none">
              <iframe 
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6385794719054!2d110.41738737593162!3d-7.051677692950558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708be9c2049b13%3A0x6764549ed0a0307f!2sUniversitas%20Diponegoro!5e0!3m2!1sen!2sid!4v1709230000000!5m2!1sen!2sid"
+       
+               src="https://maps.google.com/maps?q=Semarang,Central+Java&t=&z=8&ie=UTF8&iwloc=&output=embed"
                width="100%" 
                height="100%" 
                style={{ border: 0 }} 
                allowFullScreen 
                loading="lazy" 
-               className="w-full h-full grayscale invert-[.85] contrast-125 opacity-60"
+             
+               className="w-full h-full grayscale invert-[.9] contrast-125 opacity-70"
              ></iframe>
           </div>
 
+
           <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.8)_100%)] dark:bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,1)_100%)] pointer-events-none" />
+          
         </div>
 
         {/* SOCIAL CARD */}
