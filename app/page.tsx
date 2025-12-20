@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <main className="bg-[#000000] text-white">
       <Hero />
-      <Projects />
       <About />
+      <Projects />
       <Experience />
       <Awards /> 
       <Contact />

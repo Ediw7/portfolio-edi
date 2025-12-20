@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Palette } from "lucide-react"; // Saya tambah icon Palette biar keren
+import { ArrowUpRight, Palette, Layers } from "lucide-react";
 import Image from "next/image";
 
 export default function Projects() {
@@ -51,39 +51,42 @@ export default function Projects() {
   ];
 
   return (
-    // SECTION: Support Light (Putih) & Dark (Hitam)
-    <section id="projects" className="py-20 px-4 md:px-6 max-w-7xl mx-auto bg-white dark:bg-black transition-colors duration-300">
+    <section id="projects" className="py-32 px-4 md:px-8 max-w-7xl mx-auto bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
       
-      {/* HEADER SECTION */}
-      <div className="mb-12 md:mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-white mb-4 tracking-tight">
-          Selected <span className="text-neutral-500 dark:text-neutral-600">Projects</span>
-        </h2>
-        <p className="text-neutral-600 dark:text-neutral-400 max-w-xl text-sm md:text-base leading-relaxed">
-          A showcase of technical explorations and deployed applications.
-        </p>
+      {/* HEADER: MEGAH & PREMIUM */}
+      <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-black/10 dark:border-white/10 pb-8">
+        <div>
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter mb-2">Selected</h2>
+          <span className="text-xl md:text-2xl text-black/60 dark:text-white/60 font-light italic tracking-wide">
+            Projects & Innovations
+          </span>
+        </div>
+        <div className="hidden md:flex items-center gap-2 text-sm font-mono text-black/50 dark:text-white/50 uppercase tracking-widest mt-4 md:mt-0">
+          <Layers size={16} />
+          <span>Portfolio</span>
+        </div>
       </div>
 
       {/* GRID LAYOUT */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
         {projects.map((project, i) => (
           <ProjectCard key={i} {...project} />
         ))}
       </div>
 
-      {/* --- TOMBOL SEE DESIGN PROJECT (BARU) --- */}
-      <div className="mt-16 flex justify-center">
+      {/* --- TOMBOL SEE DESIGN PROJECT --- */}
+      <div className="mt-20 flex justify-center">
         <a 
           href="https://drive.google.com/file/d/16_M-3ucgVcpepbBtYMI7neLaeBInIuJ5/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="group relative inline-flex items-center gap-3 px-8 py-3 rounded-full bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:border-neutral-400 dark:hover:border-white/30 transition-all duration-300"
+          className="group relative inline-flex items-center gap-3 px-10 py-4 rounded-full border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white transition-all duration-300 bg-transparent"
         >
-          <Palette size={18} className="text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white transition-colors" />
-          <span className="text-sm font-bold text-neutral-600 dark:text-neutral-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+          <Palette size={18} className="text-black/60 dark:text-white/60 group-hover:text-black dark:group-hover:text-white transition-colors" />
+          <span className="text-sm font-bold uppercase tracking-widest text-black/80 dark:text-white/80 group-hover:text-black dark:group-hover:text-white transition-colors">
             See Design Projects
           </span>
-          <ArrowUpRight size={16} className="text-neutral-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUpRight size={16} className="text-black/40 dark:text-white/40 group-hover:text-black dark:group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </a>
       </div>
 
@@ -97,49 +100,61 @@ function ProjectCard({ title, tech, desc, image, link }: any) {
       href={link}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ y: -4 }}
-      // CARD STYLE: Support Light & Dark
-      className="group flex flex-col w-full bg-neutral-50 dark:bg-[#0a0a0a] border border-neutral-200 dark:border-white/10 rounded-2xl overflow-hidden hover:border-neutral-300 dark:hover:border-white/20 transition-all duration-300"
+      whileHover={{ y: -8 }}
+      className="group flex flex-col w-full h-full rounded-3xl overflow-hidden transition-all duration-500
+                 bg-white dark:bg-black
+                 border border-black/5 dark:border-white/5
+                 hover:border-black dark:hover:border-white
+                 hover:shadow-2xl"
     >
       
       {/* BAGIAN GAMBAR */}
-      <div className="relative h-48 w-full bg-neutral-200 dark:bg-neutral-900 overflow-hidden border-b border-neutral-200 dark:border-white/5">
+      <div className="relative h-64 w-full bg-black/5 dark:bg-white/5 overflow-hidden border-b border-black/5 dark:border-white/5">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover transition-all duration-500 
-                     opacity-100 grayscale-0 
-                     md:opacity-60 md:grayscale 
-                     md:group-hover:opacity-100 md:group-hover:grayscale-0 
-                     md:group-hover:scale-105"
+          // PERBAIKAN LOGIKA WARNA (MOBILE VS DESKTOP)
+          className="object-cover transition-all duration-700 
+                     grayscale-0 md:grayscale             /* Mobile: Warna, Desktop: BW */
+                     md:group-hover:grayscale-0           /* Desktop Hover: Jadi Warna */
+                     scale-100 group-hover:scale-110"
         />
         
-        {/* Overlay hitam tipis (Desktop Dark Mode) */}
-        <div className="absolute inset-0 bg-black/5 md:bg-black/10 dark:md:bg-black/20" />
+        {/* Overlay hitam tipis (Hanya muncul di Desktop saat diam, biar teks kontras kalau gambar terang) */}
+        <div className="hidden md:block absolute inset-0 bg-black/5 transition-opacity duration-500 group-hover:opacity-0" />
         
-        <div className="absolute top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-full border border-white/10 
-                        opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-           <ArrowUpRight className="w-4 h-4 text-white" />
+        {/* Icon Panah Pojok (Selalu muncul di mobile, transparan di desktop) */}
+        <div className="absolute top-4 right-4 bg-white dark:bg-black p-3 rounded-full border border-black/10 dark:border-white/10 
+                        opacity-100 md:opacity-0 md:translate-y-2 
+                        md:group-hover:opacity-100 md:group-hover:translate-y-0 
+                        transition-all duration-500 z-10 shadow-lg">
+           <ArrowUpRight className="w-4 h-4 text-black dark:text-white" />
         </div>
       </div>
 
       {/* BAGIAN KONTEN */}
-      <div className="p-5 md:p-6 flex flex-col flex-grow">
+      <div className="p-8 flex flex-col flex-grow">
         
-        <h3 className="text-lg md:text-xl font-bold text-neutral-900 dark:text-white mb-2 tracking-tight md:group-hover:underline decoration-neutral-400 dark:decoration-white/30 underline-offset-4">
-          {title}
-        </h3>
+        {/* Title & Desc */}
+        <div className="mb-6">
+            <h3 className="text-2xl font-bold text-black dark:text-white mb-3 tracking-tight leading-tight group-hover:underline decoration-1 underline-offset-4">
+            {title}
+            </h3>
+            <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed line-clamp-3 font-medium">
+            {desc}
+            </p>
+        </div>
 
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-6 line-clamp-2 md:line-clamp-3">
-          {desc}
-        </p>
-
+        {/* Tech Stack Tags */}
         <div className="mt-auto flex flex-wrap gap-2">
           {tech.map((item: string, idx: number) => (
             <span 
               key={idx} 
-              className="px-3 py-1 text-[10px] md:text-xs font-medium text-neutral-600 dark:text-neutral-300 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-white/10 rounded-full"
+              className="px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold 
+                         text-black/70 dark:text-white/70 
+                         border border-black/10 dark:border-white/10 rounded-lg
+                         group-hover:border-black/30 dark:group-hover:border-white/30 transition-colors"
             >
               {item}
             </span>
