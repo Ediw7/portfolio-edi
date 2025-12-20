@@ -15,9 +15,7 @@ export default function Hero() {
   }, [words.length]);
 
   return (
-    // FIX MOBILE KETUTUP NAVBAR:
-    // Tambahkan 'pt-32' (padding top) untuk mobile agar turun ke bawah.
-    // 'md:pt-0' artinya kalau di laptop/desktop paddingnya 0 (kembali ke tengah).
+   
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-6 overflow-hidden bg-black pt-32 md:pt-0">
       
       {/* GRADASI BACKGROUND */}
@@ -39,18 +37,17 @@ export default function Hero() {
           >
             Hi, I am <span className="text-white">Edi Wicoro</span>, a <br className="hidden md:block" />
             
-            {/* CONTAINER KATA BERGERAK (FIX JEDA KOSONG) */}
-            {/* Gunakan Grid agar teks baru & lama bertumpuk di posisi yang sama */}
+           
             <div className="grid grid-cols-1 place-items-center md:place-items-start h-[1.3em] w-full md:w-fit overflow-hidden my-1">
-              {/* PENTING: mode="wait" DIHAPUS agar animasi jalan barengan */}
+     =
               <AnimatePresence> 
                 <motion.span
                   key={words[index]}
-                  initial={{ y: 30, opacity: 0 }}   // Masuk dari bawah
-                  animate={{ y: 0, opacity: 1 }}    // Posisi normal
-                  exit={{ y: -30, opacity: 0 }}     // Keluar ke atas
+                  initial={{ y: 30, opacity: 0 }}   
+                  animate={{ y: 0, opacity: 1 }}    
+                  exit={{ y: -30, opacity: 0 }}   
                   transition={{ duration: 0.5, ease: "circOut" }}
-                  // Class ini memaksa semua teks menempati sel grid yang sama (numpuk)
+                
                   className="col-start-1 row-start-1 block italic whitespace-nowrap bg-gradient-to-r from-orange-400 via-red-500 to-purple-500 bg-clip-text text-transparent font-black pr-2"
                 >
                   {words[index]}
@@ -81,16 +78,14 @@ export default function Hero() {
           transition={{ duration: 1 }}
           className="flex justify-center md:justify-end order-2 mb-2 md:mb-0"
         >
-          {/* FOTO KECIL PROPORSIONAL */}
+
           <div className="relative group w-52 h-52 sm:w-60 sm:h-60 md:w-[320px] md:h-[320px]">
-            {/* Efek Pendaran Cahaya */}
             <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 via-orange-600/20 to-purple-600/20 rounded-full blur-3xl group-hover:opacity-80 transition-opacity duration-700" />
-            
-            {/* Bingkai Foto */}
+
             <div className="relative w-full h-full rounded-full bg-neutral-900 border border-white/10 p-2 shadow-2xl overflow-hidden">
                 <div className="w-full h-full rounded-full overflow-hidden relative bg-neutral-800">
                     <Image 
-                      src="/edi.png" 
+                      src="/ediC.png" 
                       alt="Edi Wicoro"
                       fill
                       className="object-cover translate-y-4 md:translate-y-6 grayscale hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-105"
@@ -98,10 +93,6 @@ export default function Hero() {
                 </div>
             </div>
 
-            {/* Label Status */}
-            <div className="absolute bottom-2 right-2 md:bottom-4 md:right-0 bg-white/5 backdrop-blur-md border border-white/10 px-3 py-1 rounded-2xl text-[8px] md:text-[10px] font-bold tracking-widest uppercase text-white shadow-lg">
-                Available to work
-            </div>
           </div>
         </motion.div>
 
