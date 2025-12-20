@@ -1,11 +1,39 @@
 "use client";
 
-import { Moon, Command } from "lucide-react";
+import { Moon, Sun } from "lucide-react"; // Tambah import Sun
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
+  // State untuk Dark Mode
+  const [isDark, setIsDark] = useState(true);
+
+  // Efek untuk cek preferensi awal / set class html
+  useEffect(() => {
+    // Cek apakah html punya class 'dark'
+    if (document.documentElement.classList.contains('dark')) {
+      setIsDark(true);
+    } else {
+      setIsDark(false);
+    }
+  }, []);
+
+  // Fungsi ganti tema
+  const toggleTheme = () => {
+    const newStatus = !isDark;
+    setIsDark(newStatus);
+    
+    if (newStatus) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
+
   const links = [
     { name: "Home", href: "#home" },
-    { name: "Projects", href: "#project" },
+    { name: "Projects", href: "#projects" },
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
     { name: "Awards", href: "#awards" },
@@ -13,22 +41,17 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 pt-8 px-6 pointer-events-none">
+    <nav className="fixed top-0 left-0 w-full z-50 pt-6 px-6 pointer-events-none">
       <div className="mx-auto max-w-5xl w-full pointer-events-auto">
-        {/* PERBAIKAN: 
-            1. bg-black/10 atau bg-white/5 untuk transparansi yang sangat tipis.
-            2. border-white/10 agar garis pemisah tidak terlalu kontras.
-            3. backdrop-blur-md agar efek kaca terlihat jernih.
-        */}
-        <div className="flex items-center justify-between bg-white/[0.03] backdrop-blur-md border border-white/10 px-8 py-3 rounded-full shadow-2xl shadow-black/50">
+        <div className="flex items-center justify-between bg-black/50 backdrop-blur-md border border-white/10 px-6 py-3 rounded-full shadow-2xl">
           
-          {/* Logo */}
-          <a href="#home" className="text-xl font-bold tracking-tighter hover:opacity-50 transition-all duration-300">
-            n
+          {/* 1. LOGO NAMA */}
+          <a href="#home" className="text-sm font-bold tracking-widest uppercase text-white hover:opacity-70 transition-opacity">
+            Edi Wicoro
           </a>
 
-          {/* Links */}
-          <div className="hidden md:flex items-center gap-8 text-[13px] font-medium text-white/50">
+          {/* Links (Hidden di mobile, visible di desktop) */}
+          <div className="hidden md:flex items-center gap-6 text-[12px] font-medium text-white/60">
             {links.map((link) => (
               <a
                 key={link.name}
@@ -40,12 +63,36 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Icons */}
-          <div className="flex items-center gap-5 text-white/40">
-            <Moon size={18} className="cursor-pointer hover:text-white transition-all duration-300" />
-            <div className="h-4 w-[1px] bg-white/10" /> {/* Divider kecil tambahan */}
-            <Command size={18} className="cursor-pointer hover:text-white transition-all duration-300" />
+          {/* KANAN: CV & THEME TOGGLE */}
+          <div className="flex items-center gap-4">
+            
+            {/* 2. TOMBOL MY CV */}
+            {/* GANTI 'https://drive.google.com/...' dengan link CV asli Mas Edi */}
+            <a 
+              href="https://drive.google.com/your-cv-link" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[12px] font-bold text-white bg-white/10 px-4 py-1.5 rounded-full hover:bg-white hover:text-black transition-all duration-300"
+            >
+              My CV
+            </a>
+
+            <div className="h-4 w-[1px] bg-white/10 hidden sm:block" /> 
+
+            {/* 4. DARK/LIGHT MODE TOGGLE */}
+            <button 
+              onClick={toggleTheme}
+              className="text-white/60 hover:text-white transition-colors"
+              aria-label="Toggle Theme"
+            >
+              {isDark ? (
+                <Sun size={18} /> // Muncul Matahari kalau sedang Dark Mode
+              ) : (
+                <Moon size={18} /> // Muncul Bulan kalau sedang Light Mode
+              )}
+            </button>
           </div>
+
         </div>
       </div>
     </nav>

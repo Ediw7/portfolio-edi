@@ -2,11 +2,14 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Plus, Minus } from "lucide-react";
+import Image from "next/image"; // IMPORT NEXT IMAGE
 
 const experiences = [
   {
     id: 1,
     company: "Universitas Diponegoro",
+    // GANTI PATH INI SESUAI NAMA FILE LOGO ANDA DI FOLDER PUBLIC/LOGOS
+    logo: "/logos/undip.png", 
     role: "Mobile Programming Lab Assistant",
     period: "2025",
     points: [
@@ -18,6 +21,7 @@ const experiences = [
   {
     id: 2,
     company: "Universitas Diponegoro",
+    logo: "/logos/undip.png", // Gunakan logo yang sama jika perusahaannya sama
     role: "Digital Systems Lab Assistant",
     period: "2024 - 2025",
     points: [
@@ -29,6 +33,7 @@ const experiences = [
   {
     id: 3,
     company: "PT SUCOFINDO (Semarang)",
+    logo: "/logos/sucofindo.png", // Pastikan file ada di public/logos/
     role: "Web Developer Intern",
     period: "2024",
     points: [
@@ -41,6 +46,7 @@ const experiences = [
   {
     id: 4,
     company: "Higenncy",
+    logo: "/logos/higenncy.png", // Pastikan file ada di public/logos/
     role: "Graphic Design Intern",
     period: "2023", 
     points: [
@@ -52,6 +58,7 @@ const experiences = [
   {
     id: 5,
     company: "Higenncy (Ministry of Finance Project)",
+    logo: "/logos/higenncy.png", 
     role: "Email Marketing Design Intern",
     period: "2023",
     points: [
@@ -63,6 +70,7 @@ const experiences = [
   {
     id: 6,
     company: "PT Digital Investa Indonesia",
+    logo: "/logos/dii.png", // Ganti dengan nama file yang sesuai
     role: "Graphic Design Intern",
     period: "2022",
     points: [
@@ -74,7 +82,6 @@ const experiences = [
 ];
 
 export default function Experience() {
-  // State untuk accordion, default null (tertutup semua biar rapi)
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
@@ -96,21 +103,39 @@ export default function Experience() {
             >
               <button 
                 onClick={() => setExpanded(isOpen ? null : exp.id)}
-                className="w-full py-8 flex items-start justify-between text-left group-hover:bg-neutral-900/30 transition-colors duration-300 px-2"
+                className="w-full py-6 md:py-8 flex items-start justify-between text-left group-hover:bg-neutral-900/30 transition-colors duration-300 px-2 rounded-lg"
               >
-                {/* Kolom Kiri: Role & Company */}
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8">
-                  <span className="text-sm font-mono text-neutral-500 w-24 pt-1">{exp.period}</span>
-                  <div>
-                    <h3 className={`text-xl font-bold transition-colors ${isOpen ? 'text-white' : 'text-neutral-300 group-hover:text-white'}`}>
-                      {exp.role}
-                    </h3>
-                    <p className="text-neutral-500 text-sm mt-1">{exp.company}</p>
+                {/* CONTAINER UTAMA KIRI */}
+                <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8 flex-1">
+                  
+                  {/* 1. TAHUN/PERIODE */}
+                  <span className="text-sm font-mono text-neutral-500 w-28 pt-1 flex-shrink-0">{exp.period}</span>
+                  
+                  {/* CONTAINER LOGO & TEKS */}
+                  <div className="flex items-center gap-4 flex-1">
+                      {/* 2. LOGO PERUSAHAAN (BARU DITAMBAHKAN) */}
+                      <div className="relative w-12 h-12 flex-shrink-0 bg-white/5 p-2 rounded-lg border border-white/10 overflow-hidden">
+                          <Image 
+                            src={exp.logo} 
+                            alt={`${exp.company} logo`}
+                            fill
+                            className="object-contain" // Agar logo tidak gepeng
+                          />
+                      </div>
+
+                      {/* 3. ROLE & COMPANY TEXT */}
+                      <div>
+                        <h3 className={`text-lg md:text-xl font-bold transition-colors ${isOpen ? 'text-white' : 'text-neutral-300 group-hover:text-white'}`}>
+                          {exp.role}
+                        </h3>
+                        <p className="text-neutral-500 text-sm mt-0.5">{exp.company}</p>
+                      </div>
                   </div>
+
                 </div>
 
                 {/* Icon Toggle (+ / -) */}
-                <div className="ml-4 text-neutral-500 group-hover:text-white transition-colors">
+                <div className="ml-4 mt-2 md:mt-0 text-neutral-500 group-hover:text-white transition-colors">
                   {isOpen ? <Minus size={20} /> : <Plus size={20} />}
                 </div>
               </button>
@@ -125,7 +150,8 @@ export default function Experience() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <div className="pl-0 md:pl-32 pb-8 pr-4 text-neutral-400">
+                    {/* Padding kiri disesuaikan agar sejajar dengan teks di atas (melewati logo) */}
+                    <div className="pl-4 md:pl-[11.5rem] pb-8 pr-4 text-neutral-400">
                       {/* List Jobdesk */}
                       <ul className="list-disc list-outside ml-4 space-y-2 mb-6 text-sm leading-relaxed">
                         {exp.points.map((point, idx) => (

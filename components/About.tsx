@@ -15,17 +15,17 @@ export default function About() {
           <h2 className="text-4xl font-bold mb-6 text-white tracking-tight">About <span className="text-neutral-600">Me</span></h2>
           <div className="space-y-4 text-neutral-400 leading-relaxed font-light text-lg">
             <p>
-              Hi, I'm <strong className="text-red-600 font-bold">Edi Wicoro</strong>. I am an Undergraduate Computer Engineering student at <span className="text-white">Universitas Diponegoro</span>.
+              Hi, I'm <strong className="text-white font-bold">Edi Wicoro</strong>. I am an Undergraduate Computer Engineering student at <span className="font-bold text-white">Universitas Diponegoro</span>.
             </p>
             <p>
-              I specialize in <span className="text-white">Fullstack Development</span> and have a growing passion for <span className="text-red-600 font-medium">Blockchain Technology</span>. I love building interfaces that are not just functional, but also visually compelling.
+              I specialize in Fullstack Development and have a growing passion for Blockchain Technology. I love building interfaces that are not just functional, but also visually compelling.
             </p>
           </div>
         </div>
 
         <div className="space-y-8 pt-2">
             {/* Education Block */}
-            <div className="border-l-2 border-neutral-800 pl-6 hover:border-red-600 transition-colors duration-500">
+            <div className="border-l-2 border-red-600 pl-6 transition-colors duration-500">
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500 mb-2">Education</h3>
                 <h4 className="text-xl font-medium text-white">Universitas Diponegoro</h4>
                 <div className="flex justify-between items-center mt-1 max-w-xs">
@@ -35,7 +35,7 @@ export default function About() {
             </div>
 
             {/* Experience Block */}
-            <div className="border-l-2 border-neutral-800 pl-6 hover:border-red-600 transition-colors duration-500">
+            <div className="border-l-2 border-red-600 pl-6 transition-colors duration-500">
                 <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-500 mb-2">Current Focus</h3>
                 <p className="text-neutral-400 text-sm">
                    Exploring <span className="text-white">Hyperledger Fabric</span> for secure supply chain systems and refining my <span className="text-white">React & Next.js</span> craft.
