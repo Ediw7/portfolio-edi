@@ -38,10 +38,10 @@ export default function Hero() {
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-6 px-4 py-1.5 rounded-full border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 backdrop-blur-sm"
+            className="mb-4 py-1"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-black/60 dark:text-white/60">
-              👋 Welcome to my portfolio
+            👋 Welcome to my portfolio
             </span>
           </motion.div>
 
