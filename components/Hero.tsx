@@ -18,23 +18,21 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen w-full flex items-center justify-center px-6 overflow-hidden bg-white dark:bg-black pt-22 md:pt-0 transition-colors duration-300">
       
-      {/* --- BACKGROUND GRADIENTS (SUBTLE) --- */}
+      {/* --- BACKGROUND GRADIENTS --- */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-30 dark:opacity-20">
         <div className="absolute top-[-10%] left-[-10%] w-[70%] h-[70%] rounded-full bg-purple-500/20 dark:bg-purple-900/20 blur-[120px]" />
         <div className="absolute top-[10%] right-[-5%] w-[50%] h-[60%] rounded-full bg-red-500/20 dark:bg-red-900/20 blur-[120px]" />
         <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] rounded-full bg-orange-500/20 dark:bg-orange-900/20 blur-[120px]" />
       </div>
 
-      {/* --- GRADASI POJOK KIRI ATAS (KECIL & ELEGAN) --- */}
-      {/* Ukuran diperkecil jadi w-[300px], posisi diatur agar hanya mengintip sedikit */}
+      {/* --- GRADASI POJOK KIRI ATAS --- */}
       <div className="absolute -top-[80px] -left-[80px] w-[300px] h-[300px] bg-red-600/30 dark:bg-red-900/40 rounded-full blur-[100px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center mx-auto">
         
-        {/* BAGIAN KIRI: TEKS & TOMBOL */}
+        {/* BAGIAN KIRI: TEKS */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left order-1 z-20">
           
-          {/* Greeting Pill */}
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,7 +43,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* JUDUL BESAR */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,7 +54,6 @@ export default function Hero() {
             <span className="text-red-600">.</span>
           </motion.h1>
 
-          {/* ANIMATED TEXT */}
           <div className="h-[2em] w-full flex justify-center md:justify-start overflow-hidden mb-6">
              <div className="text-xl md:text-2xl font-light italic text-black/60 dark:text-white/60 mr-3">
                I am a
@@ -78,7 +74,6 @@ export default function Hero() {
              </div>
           </div>
 
-          {/* LOCATION */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -88,14 +83,12 @@ export default function Hero() {
             Semarang, Indonesia • UTC/GMT +7
           </motion.p>
 
-          {/* BUTTONS SECTION */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
           >
-            {/* 1. PRIMARY BUTTON */}
             <a 
               href="#projects"
               className="group relative px-8 py-3.5 rounded-full bg-black dark:bg-white text-white dark:text-black font-bold uppercase tracking-widest text-xs overflow-hidden transition-all hover:scale-105 active:scale-95 w-full sm:w-auto"
@@ -104,7 +97,6 @@ export default function Hero() {
               <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 ease-in-out" />
             </a>
 
-            {/* 2. SECONDARY BUTTON */}
             <a 
               href="#contact"
               className="group flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-black/10 dark:border-white/10 hover:border-black dark:hover:border-white bg-transparent text-black dark:text-white font-bold uppercase tracking-widest text-xs transition-all w-full sm:w-auto"
@@ -123,7 +115,14 @@ export default function Hero() {
           transition={{ duration: 1 }}
           className="flex justify-center order-2 mb-10 md:mb-0 relative mx-auto md:mx-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-tr from-red-500/10 via-orange-500/10 to-purple-500/10 rounded-full blur-3xl scale-110" />
+          {/* --- PERBAIKAN: DECORATION CIRCLE BEHIND (VISIBLE ON MOBILE) --- */}
+          <div className="absolute inset-0 
+              bg-gradient-to-tr 
+              from-red-600/40 via-orange-500/40 to-purple-600/40 md:from-red-500/10 md:via-orange-500/10 md:to-purple-500/10 
+              rounded-full 
+              blur-2xl md:blur-3xl 
+              scale-125 md:scale-110" 
+          />
 
           <div className="relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80">
             <div className="w-full h-full rounded-full border-2 border-black/10 dark:border-white/10 shadow-xl overflow-hidden relative bg-neutral-100 dark:bg-neutral-900">
