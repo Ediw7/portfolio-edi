@@ -5,6 +5,12 @@
   --foreground: #ffffff;
 }
 
+html, body {
+  cursor: none !important;
+}
+a, button {
+  cursor: none !important;
+}
 body {
   background: #000000; 
   color: #ffffff;
