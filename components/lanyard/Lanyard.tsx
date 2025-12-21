@@ -182,22 +182,19 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }) {
         </RigidBody>
       </group>
 
-      <mesh ref={band}>
-        {/* @ts-ignore */}
-        <meshLineGeometry />
-        {/* @ts-ignore */}
-        <meshLineMaterial
-          color="white"
-          emissive="white"
-          emissiveIntensity={0.3}
-          depthTest={false}
-          resolution={[1000, 1000]}
-          useMap={true}
-          map={texture}
-          repeat={[-4, 1]} // Mengatur agar ornamen di lanyard.png terlihat berulang
-          lineWidth={1}
-        />
-      </mesh>
+     <mesh ref={band}>
+  {/* @ts-ignore */}
+  <meshLineGeometry />
+  {/* @ts-ignore */}
+  <meshLineMaterial
+  color="white"
+  emissive="white"           // Membuat tali sedikit bercahaya
+  emissiveIntensity={0.5}    // Atur kecerahan cahayanya
+  depthTest={false}
+  resolution={[1000, 1000]}
+  lineWidth={1}
+  />
+</mesh>
     </>
   );
 }

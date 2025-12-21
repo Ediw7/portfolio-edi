@@ -28,7 +28,8 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-32 px-4 md:px-8 max-w-7xl mx-auto bg-white dark:bg-black text-black dark:text-white transition-colors duration-300">
+<section id="about" className="w-full bg-white dark:bg-black transition-colors duration-300">
+  <div className="py-32 px-4 md:px-8 max-w-7xl mx-auto text-black dark:text-white">
       
       {/* HEADER */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-24 items-end border-b border-black/10 dark:border-white/10 pb-12">
@@ -50,7 +51,6 @@ export default function About() {
           </p>
           
          <div className="grid grid-cols-2 gap-8 mt-8 pl-6 border-l-2 border-red-600">
-         
               <div>
                   <h3 className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-2">University</h3>
                   <p className="font-medium text-black dark:text-white">Universitas Diponegoro</p>
@@ -66,12 +66,10 @@ export default function About() {
         </div>
       </div>
 
-    
       <div className="grid grid-cols-1 md:grid-cols-6 gap-6 auto-rows-[240px]">
        
+        {/* MAP CARD */}
         <div className="md:col-span-4 relative bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-[2rem] overflow-hidden group">
-          
-         
           <div className="absolute top-6 left-6 z-20 flex items-center gap-3">
              <div className="bg-white/90 dark:bg-black/90 backdrop-blur-md px-4 py-2 rounded-full border border-black/10 dark:border-white/10 flex items-center gap-2 shadow-xl">
                 <MapPin size={14} className="text-red-600 fill-red-600" />
@@ -79,35 +77,24 @@ export default function About() {
              </div>
           </div>
       
-        
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center pointer-events-none">
-     
              <div className="w-3 h-3 bg-red-600 rounded-full shadow-[0_0_20px_rgba(220,38,38,1)] relative z-10" />
-           
              <div className="absolute w-12 h-12 bg-red-600/30 rounded-full animate-ping" />
-            
              <div className="absolute w-32 h-32 border border-red-600/20 rounded-full animate-pulse" />
-             <div className="absolute w-96 h-96 border border-red-600/5 rounded-full" />
           </div>
         
-   
           <div className="absolute inset-0 w-full h-full pointer-events-none">
              <iframe 
-       
-               src="https://maps.google.com/maps?q=Semarang,Central+Java&t=&z=8&ie=UTF8&iwloc=&output=embed"
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58585987157!2d110.34702416972036!3d-7.012011863584784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708b4d3bd70493%3A0x3030303030303030!2sSemarang%2C%20Kota%20Semarang%2C%20Jawa%20Tengah!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid"
                width="100%" 
                height="100%" 
                style={{ border: 0 }} 
                allowFullScreen 
                loading="lazy" 
-             
-               className="w-full h-full grayscale invert-[.9] contrast-125 opacity-70"
+               className="w-full h-full grayscale dark:invert-[.9] contrast-125 opacity-70"
              ></iframe>
           </div>
-
-
-          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,0.8)_100%)] dark:bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,1)_100%)] pointer-events-none" />
-          
+          <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_20%,rgba(255,255,255,0.8)_100%)] dark:bg-[radial-gradient(circle,transparent_20%,rgba(0,0,0,1)_100%)] pointer-events-none" />
         </div>
 
         {/* SOCIAL CARD */}
@@ -127,32 +114,27 @@ export default function About() {
           </div>
         </div>
 
-       {/* TECH STACK CARD */}
-        <div className="md:col-span-4 bg-black border border-white/10 rounded-[2rem] p-6 flex flex-col justify-center relative overflow-hidden group">
-          {/* Label Header */}
+       {/* TECH STACK CARD - FIXED FOR LIGHT MODE */}
+        <div className="md:col-span-4 bg-white dark:bg-black border border-black/10 dark:border-white/10 rounded-[2rem] p-6 flex flex-col justify-center relative overflow-hidden group">
           <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
-            <Zap size={16} className="text-white/50" />
-            <span className="text-xs font-bold uppercase tracking-widest text-white/50">Tech Stack</span>
+            <Zap size={16} className="text-black/50 dark:text-white/50" />
+            <span className="text-xs font-bold uppercase tracking-widest text-black/50 dark:text-white/50">Tech Stack</span>
           </div>
 
-          {/* Marquee Container */}
           <div className="w-full mt-12 relative z-10 flex flex-col gap-1">
-            {/* ROW 1 */}
             <div className="flex animate-marquee gap-10 items-center w-max">
               <StackIconsRow1 />
               <StackIconsRow1 /> 
             </div>
-
-            {/* ROW 2 */}
             <div className="flex animate-marquee-reverse gap-10 items-center w-max -mt-6">
               <StackIconsRow2 />
               <StackIconsRow2 /> 
             </div>
           </div>
           
-          {/* Shadow Overlay untuk efek Fade di pinggir */}
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10" />
+          {/* Gradient Overlays adapted to theme */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-white dark:from-black to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white dark:from-black to-transparent z-10" />
         </div>
           
         {/* CONTRIBUTIONS CARD */}
@@ -181,22 +163,19 @@ export default function About() {
         {/* CORE CARD */}
         <div className="md:col-span-1 bg-white dark:bg-black border border-black/10 dark:border-white/10 rounded-[2rem] p-6 flex flex-col items-center justify-center relative group hover:border-black/30 dark:hover:border-white/30 transition-all overflow-hidden">
              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
-
              <div className="relative z-10 mt-2 w-20 h-20 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                 <Atom size={40} className="text-black dark:text-white animate-spin-slow" />
              </div>
-             
              <div className="absolute top-6 left-6">
                 <Heart size={16} className="text-black/40 dark:text-white/40" />
              </div>
              <p className="absolute bottom-6 text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40">Favorite</p>
         </div>
-
+      </div>
       </div>
     </section>
   );
 }
-
 
 function SocialRow({ icon, label, href }: { icon: any, label: string, href: string }) {
     return (
@@ -210,7 +189,6 @@ function SocialRow({ icon, label, href }: { icon: any, label: string, href: stri
     )
 }
 
-
 function StackIconsRow1() {
     return (
         <div className="flex items-center gap-12 mx-4"> 
@@ -223,7 +201,6 @@ function StackIconsRow1() {
         </div>
     );
 }
-
 
 function StackIconsRow2() {
     return (
@@ -248,9 +225,10 @@ function TechImage({ src, alt }: { src: string, alt: string }) {
                 height={80}        
                 className="object-contain 
                            brightness-0 
-                           invert 
-                           opacity-100 
-                           transition-transform 
+                           dark:invert 
+                           opacity-80
+                           dark:opacity-100 
+                           transition-all 
                            duration-500" 
             />
         </div>
