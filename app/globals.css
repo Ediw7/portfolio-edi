@@ -5,6 +5,22 @@
   --foreground: #ffffff;
 }
 
+/* Efek Grain Mewah */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Tekstur noise halus */
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(120%) brightness(100%);
+  opacity: 0.04; /* Sangat tipis, jangan terlalu tebal */
+  z-index: 9999; /* Di atas segalanya agar menyatu */
+}
+
 html, body {
   cursor: none !important;
 }

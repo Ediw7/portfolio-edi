@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import { GeistSans } from 'geist/font/sans';
 import CanvasCursor from "@/components/CanvasCursor";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
 
 export const metadata = {
   title: "Edi Wicoro",
@@ -17,9 +18,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${GeistSans.className} antialiased bg-black text-white`}>
         <Navbar />
-        <CustomCursor />
-        {children}
-        <CanvasCursor />
+        <SmoothScroll>
+          <CustomCursor />
+          {children}
+          <CanvasCursor />
+        </SmoothScroll>
       </body>
     </html>
   );
