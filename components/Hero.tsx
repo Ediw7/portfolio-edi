@@ -26,7 +26,7 @@ export default function Hero() {
       </div>
 
       {/* --- GRADASI POJOK KIRI ATAS --- */}
-      <div className="absolute -top-[80px] -left-[80px] w-[300px] h-[300px] bg-red-600/30 dark:bg-red-900/40 rounded-full blur-[100px] pointer-events-none z-0" />
+      <div className="absolute -top-[80px] -left-[80px] w-[300px] h-[300px] bg-blue-600/20 dark:bg-blue-900/30 rounded-full blur-[120px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center mx-auto">
         
