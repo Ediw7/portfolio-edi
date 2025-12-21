@@ -1,17 +1,15 @@
 "use client";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// 1. PINDAHKAN TIPE DATA & LINKS KE LUAR COMPONENT (SOLUSI ERROR)
 type NavLink = {
   name: string;
   href: string;
   id: string;
 };
 
-// Array ini statis, jadi aman ditaruh di luar agar tidak re-render
 const links: NavLink[] = [
   { name: "Home", href: "#home", id: "home" },
   { name: "About", href: "#about", id: "about" },
@@ -26,7 +24,6 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const observer = useRef<IntersectionObserver | null>(null);
 
-  // --- SCROLL SPY LOGIC ---
   useEffect(() => {
     const options = {
       root: null,
@@ -54,7 +51,7 @@ export default function Navbar() {
     return () => {
       if (observer.current) observer.current.disconnect();
     };
-  }, []); // Dependency kosong karena 'links' sekarang statis di luar
+  }, []);
 
   const handleNavClick = (id: string) => {
     setActiveSection(id);
@@ -62,21 +59,24 @@ export default function Navbar() {
   };
 
   return (
-    // 2. Padding atas dikurangi drastis (pt-6 -> pt-3) agar tidak menutupi teks Hero
     <nav className="fixed top-0 left-0 w-full z-50 pt-3 px-4 md:px-6 pointer-events-none">
       <div className="mx-auto max-w-5xl w-full pointer-events-auto relative">
         
-        {/* --- MAIN BAR: ULTRA THIN LUXURY --- */}
-        {/* Perubahan: py-4 -> py-2.5 (Lebih tipis/gepeng) */}
-        <div className="flex items-center justify-between bg-[#080808]/80 backdrop-blur-2xl border border-white/5 px-6 py-2.5 rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.4)] relative z-50 transition-all duration-300">
+        {/* --- MAIN BAR: ULTRA THIN & CRYSTAL CLEAR --- */}
+        <div className="flex items-center justify-between bg-white/[0.02] backdrop-blur-xl border border-white/[0.08] px-6 py-2.5 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.3)] relative z-50 transition-all duration-300">
           
-          {/* LOGO: Ukuran disesuaikan */}
+          {/* LOGO: E + Edi Wicoro (No Hover Red) */}
           <a 
             href="#home" 
             onClick={() => handleNavClick('home')} 
-            className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-white hover:text-neutral-400 transition-colors"
+            className="flex items-center gap-3 group transition-opacity hover:opacity-70"
           >
-            Edi Wicoro
+            <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
+              <span className="text-[10px] font-black text-black leading-none">E</span>
+            </div>
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase text-white">
+              Edi Wicoro
+            </span>
           </a>
 
           {/* DESKTOP LINKS */}
@@ -88,21 +88,16 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => handleNavClick(link.id)}
-                  // Padding link juga dikecilkan (py-2 -> py-1.5)
                   className={`relative px-4 py-1.5 text-[9px] lg:text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 ${
-                    isActive ? "text-white" : "text-neutral-500 hover:text-white"
+                    isActive ? "text-white" : "text-white/30 hover:text-white"
                   }`}
                 >
                   <span className="relative z-10">{link.name}</span>
-
-                  {/* EFEK LASER (Disesuaikan posisinya) */}
                   {isActive && (
                     <motion.span
                       layoutId="activeSectionGlow"
                       className="absolute -bottom-1 left-0 right-0 mx-auto w-[40%] h-[1px] bg-gradient-to-r from-transparent via-red-600 to-transparent"
-                      style={{
-                        boxShadow: "0 2px 8px rgba(220, 38, 38, 1), 0 0 15px rgba(220, 38, 38, 0.5)"
-                      }}
+                      style={{ boxShadow: "0 2px 8px rgba(220, 38, 38, 1)" }}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
@@ -113,67 +108,86 @@ export default function Navbar() {
 
           {/* KANAN: CV & HAMBURGER */}
           <div className="flex items-center gap-3">
-            {/* CV Button: Lebih kecil & compact */}
             <a 
               href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:block text-[9px] font-bold text-black bg-white px-5 py-1.5 rounded-full hover:bg-neutral-300 transition-all duration-300 tracking-widest uppercase"
+              className="hidden sm:block text-[9px] font-bold text-black bg-white px-5 py-1.5 rounded-full hover:bg-neutral-200 transition-all duration-300 tracking-widest uppercase"
             >
               Resume
             </a>
 
             <button 
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden text-white hover:text-neutral-400 transition-colors p-1"
+              className="md:hidden text-white p-1"
             >
-              {isOpen ? <X size={18} /> : <Menu size={18} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* --- MOBILE MENU --- */}
+        {/* --- MOBILE MENU: ELITE SIDE-DRAWER --- */}
         <AnimatePresence>
           {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              // Menu turun sedikit lebih dekat karena navbar menipis (mt-2)
-              className="absolute top-full left-0 w-full mt-2 p-2 bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/5 rounded-3xl md:hidden z-40 shadow-2xl overflow-hidden"
-            >
-              <div className="flex flex-col">
-                {links.map((link) => {
-                   const isActive = activeSection === link.id;
-                   return (
-                  <a
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => handleNavClick(link.id)}
-                    className={`relative block px-5 py-3 text-xs font-bold uppercase tracking-[0.2em] rounded-2xl transition-all border-b border-white/5 last:border-none ${
-                        isActive ? "text-white bg-white/5" : "text-neutral-500 hover:text-white hover:bg-white/5"
-                    }`}
-                  >
-                    <span className="relative z-10">{link.name}</span>
-                     
-                     {/* Mobile Laser Accent */}
-                     {isActive && (
-                        <motion.div
-                        layoutId="activeSectionGlowMobile"
-                        className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-[40%] bg-red-600 rounded-r-full shadow-[0_0_10px_rgba(220,38,38,0.8)]"
-                        />
-                    )}
-                  </a>
-                )})}
-                
-                <div className="p-2 mt-2">
-                    <a href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" className="flex items-center justify-center w-full py-3 bg-white text-black rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-neutral-200">
-                        Resume
-                    </a>
+            <>
+              <motion.div 
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                onClick={() => setIsOpen(false)}
+                className="fixed inset-0 bg-black/60 backdrop-blur-xl md:hidden z-[60]"
+              />
+              
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 40 }}
+                transition={{ type: "spring", stiffness: 300, damping: 35 }}
+                className="fixed top-0 right-0 h-full w-[80%] max-w-[300px] bg-[#000000] border-l border-white/5 p-8 md:hidden z-[70] flex flex-col justify-between"
+              >
+                {/* Menu Links */}
+                <div className="mt-12 flex flex-col gap-6">
+                  <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.5em] mb-2">Navigation</span>
+                  {links.map((link, i) => {
+                    const isActive = activeSection === link.id;
+                    return (
+                      <motion.a
+                        key={link.name}
+                        href={link.href}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.05 }}
+                        onClick={() => handleNavClick(link.id)}
+                        className={`group flex items-center justify-between text-xl font-black uppercase tracking-tighter transition-all ${
+                          isActive ? "text-white" : "text-white/20 hover:text-white/50"
+                        }`}
+                      >
+                        <div className="flex items-center gap-4 italic">
+                          <span className="text-[10px] font-mono not-italic opacity-30">0{i + 1}</span>
+                          {link.name}
+                        </div>
+                        {isActive && <div className="w-2 h-2 bg-red-600 rounded-full shadow-[0_0_15px_rgba(220,38,38,0.8)]" />}
+                      </motion.a>
+                    );
+                  })}
                 </div>
-              </div>
-            </motion.div>
+
+                {/* Resume Section (Raised Up) */}
+                <div className="mb-6 space-y-6">
+                  <div className="h-[1px] w-full bg-white/5" />
+                  <a 
+                    href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" 
+                    target="_blank"
+                    className="flex flex-col gap-3 group"
+                  >
+                    <span className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">Curriculum Vitae</span>
+                    <div className="flex items-center justify-between bg-white px-6 py-4 rounded-2xl text-black transition-transform active:scale-95 shadow-xl">
+                      <span className="text-xs font-black uppercase tracking-widest">Download CV</span>
+                      <ArrowUpRight size={18} strokeWidth={3} />
+                    </div>
+                  </a>
+                  <p className="text-[8px] text-white/10 uppercase tracking-[0.4em] text-center pt-2">© 2025 Edi Wicoro</p>
+                </div>
+              </motion.div>
+            </>
           )}
         </AnimatePresence>
 
