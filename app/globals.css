@@ -68,3 +68,15 @@ body {
 .group:hover .animate-marquee-reverse {
   animation-play-state: paused;
 }
+
+@media (pointer: fine) {
+  html, body, a, button {
+    cursor: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  html, body, a, button {
+    cursor: auto !important;
+  }
+}
