@@ -15,7 +15,7 @@ const experiences = [
       "Mentored students in mobile application development practices.",
       "Assisted in debugging and testing Android-based applications."
     ],
-    tech: ["Android", "Kotlin", "Debugging"]
+    tech: ["Android", "React Native", "Debugging"]
   },
   {
     id: 2,

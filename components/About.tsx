@@ -49,11 +49,18 @@ export default function About() {
             Specializing in <span className="underline decoration-1 underline-offset-4 decoration-black/30 dark:decoration-white/30">Fullstack Development</span> & <span className="underline decoration-1 underline-offset-4 decoration-black/30 dark:decoration-white/30">Blockchain</span>. I obsess over pixel-perfect interfaces and secure decentralized systems.
           </p>
           
-          <div className="grid grid-cols-2 gap-8 mt-8 pl-6 border-l-2 border-red-600">
+         <div className="grid grid-cols-2 gap-8 mt-8 pl-6 border-l-2 border-red-600">
+         
               <div>
-                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-2">Education</h3>
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-2">University</h3>
                   <p className="font-medium text-black dark:text-white">Universitas Diponegoro</p>
                   <p className="text-sm text-black/50 dark:text-white/50">Computer Engineering</p>
+              </div>
+
+              <div>
+                  <h3 className="text-[10px] font-bold uppercase tracking-widest text-black/40 dark:text-white/40 mb-2">High School</h3>
+                  <p className="font-medium text-black dark:text-white">SMK N 1 Batang</p>
+                  <p className="text-sm text-black/50 dark:text-white/50">Multimedia</p>
               </div>
           </div>
         </div>
@@ -212,7 +219,8 @@ function StackIconsRow1() {
             <TechImage src="/next1.png" alt="Next.js" />
             <TechImage src="/reactjs.png" alt="React" />
             <TechImage src="/type1.png" alt="TypeScript" />
-            <TechImage src="/hyper1.png" alt="Hyperledger" />
+            <TechImage src="/node.png" alt="Node.js" />
+            <TechImage src="/java.png" alt="Java" />
         </div>
     );
 }
@@ -224,8 +232,9 @@ function StackIconsRow2() {
             <TechImage src="/mongo.png" alt="MongoDB" />
             <TechImage src="/mysql.png" alt="MySql" />
             <TechImage src="/tail.png" alt="Tailwind" />
-            <TechImage src="/mongo.png" alt="MongoDB" /> 
-            <TechImage src="/mysql.png" alt="MySql" />
+            <TechImage src="/ci.png" alt="Codeigniter" />
+            <TechImage src="/laravel.png" alt="Laravel" />
+            <TechImage src="/figma.png" alt="Figma" />
         </div>
     );
 }

@@ -115,7 +115,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* CV Button: Lebih kecil & compact */}
             <a 
-              href="https://drive.google.com/your-cv-link" 
+              href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:block text-[9px] font-bold text-black bg-white px-5 py-1.5 rounded-full hover:bg-neutral-300 transition-all duration-300 tracking-widest uppercase"
@@ -168,7 +168,7 @@ export default function Navbar() {
                 )})}
                 
                 <div className="p-2 mt-2">
-                    <a href="https://drive.google.com/your-cv-link" className="flex items-center justify-center w-full py-3 bg-white text-black rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-neutral-200">
+                    <a href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" className="flex items-center justify-center w-full py-3 bg-white text-black rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-neutral-200">
                         Resume
                     </a>
                 </div>

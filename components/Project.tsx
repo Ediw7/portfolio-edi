@@ -46,7 +46,7 @@ export default function Projects() {
       tech: ["HTML", "CSS", "JS"], 
       desc: "KAMPUNG KREATIF is a promotional and information website showcasing local tourism villages and cultural experiences.",
       image: "/kampungKreatif.jpg",
-      link: "https://kampungkreatif.netlify.app/e"
+      link: "https://kampungkreatif.netlify.app/"
     },
   ];
 

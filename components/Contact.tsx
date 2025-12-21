@@ -103,9 +103,9 @@ export default function Contact() {
 
           <div className="flex flex-col gap-4">
             <h4 className="text-[10px] font-bold uppercase tracking-widest text-white/20 mb-2">Socials</h4>
-            <FooterLink label="LinkedIn" href="https://linkedin.com/in/ediwicoro" />
-            <FooterLink label="GitHub" href="https://github.com/ediwicoro" />
-            <FooterLink label="Instagram" href="https://instagram.com/ediwicoro" />
+            <FooterLink label="LinkedIn" href="https://www.linkedin.com/in/edi-wicoro-300178371/" />
+            <FooterLink label="GitHub" href="https://github.com/Ediw7" />
+            <FooterLink label="Instagram" href="https://www.instagram.com/ediwicoro07/" />
           </div>
 
           <div className="hidden md:block"></div>
