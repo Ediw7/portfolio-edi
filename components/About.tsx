@@ -127,17 +127,16 @@ export default function About() {
           </div>
         </div>
 
-        <div className="md:col-span-4 bg-black dark:bg-white border border-black/10 dark:border-white/10 rounded-[2rem] p-6 flex flex-col justify-center relative overflow-hidden group">
-          <div className="absolute inset-0 bg-black dark:bg-neutral-100 transition-colors duration-300" />
-          
-          <div className="absolute top-6 left-6 z-10 flex items-center gap-2">
-            <Zap size={16} className="text-white/50 dark:text-black/50" />
-            <span className="text-xs font-bold uppercase tracking-widest text-white/50 dark:text-black/50">Tech Stack</span>
+       {/* TECH STACK CARD */}
+        <div className="md:col-span-4 bg-black border border-white/10 rounded-[2rem] p-6 flex flex-col justify-center relative overflow-hidden group">
+          {/* Label Header */}
+          <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
+            <Zap size={16} className="text-white/50" />
+            <span className="text-xs font-bold uppercase tracking-widest text-white/50">Tech Stack</span>
           </div>
 
-     
+          {/* Marquee Container */}
           <div className="w-full mt-12 relative z-10 flex flex-col gap-1">
-            
             {/* ROW 1 */}
             <div className="flex animate-marquee gap-10 items-center w-max">
               <StackIconsRow1 />
@@ -145,15 +144,15 @@ export default function About() {
             </div>
 
             {/* ROW 2 */}
-<div className="flex animate-marquee-reverse gap-10 items-center w-max -mt-6">
+            <div className="flex animate-marquee-reverse gap-10 items-center w-max -mt-6">
               <StackIconsRow2 />
               <StackIconsRow2 /> 
             </div>
-
           </div>
           
-          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black dark:from-neutral-100 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black dark:from-neutral-100 to-transparent z-10" />
+          {/* Shadow Overlay untuk efek Fade di pinggir */}
+          <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10" />
         </div>
           
         {/* CONTRIBUTIONS CARD */}
@@ -241,18 +240,18 @@ function StackIconsRow2() {
 
 function TechImage({ src, alt }: { src: string, alt: string }) {
     return (
-
         <div className="relative w-24 h-24 flex items-center justify-center flex-shrink-0"> 
             <Image 
                 src={src}   
                 alt={alt}       
-                width={96}         
-                height={96}        
+                width={80}         
+                height={80}        
                 className="object-contain 
-                           brightness-0      
-                           invert            
-                           dark:invert-0     
-                           opacity-60 hover:opacity-100 transition-opacity duration-300" 
+                           brightness-0 
+                           invert 
+                           opacity-100 
+                           transition-transform 
+                           duration-500" 
             />
         </div>
     )
