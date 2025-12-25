@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import CanvasCursor from "@/components/CanvasCursor";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
   title: "Edi Wicoro",
@@ -22,6 +23,7 @@ export default function RootLayout({
           <CustomCursor />
           {children}
           <CanvasCursor />
+          <WhatsAppButton />
         </SmoothScroll>
       </body>
     </html>
