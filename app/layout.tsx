@@ -1,15 +1,14 @@
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { GeistSans } from 'geist/font/sans';
-import CanvasCursor from "@/components/CanvasCursor";
-import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
-import WhatsAppButton from "@/components/WhatsAppButton";
+import { CanvasCursor, CustomCursor, WhatsAppButton } from "@/components/ClientComponents";
 
 export const metadata = {
   title: "Edi Wicoro",
   description: "Edi Wicoro Portfolio",
 };
+
 export default function RootLayout({
   children,
 }: {

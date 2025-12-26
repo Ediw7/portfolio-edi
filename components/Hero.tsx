@@ -131,8 +131,9 @@ export default function Hero() {
                   src="/ediC.png" 
                   alt="Edi Wicoro"
                   fill
-                  priority
-                  className="object-cover translate-y-3 transition-transform duration-700 group-hover:scale-105"
+                  priority // Memastikan dimuat lebih awal
+                  sizes="(max-width: 768px) 224px, 320px" // Sangat penting untuk performa mobile
+                  className="object-cover"
                 />
             </div>
 
