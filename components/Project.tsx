@@ -7,6 +7,13 @@ import Image from "next/image";
 export default function Projects() {
   const projects = [
     { 
+      title: "Habitivity", 
+      tech: ["Next.js", "Tailwind CSS", "MongoDB"], 
+      desc: "Habitivity is a gamified Life Operating System that transforms daily routines into a high-value digital asset collection using AI and RPG elements.",
+      image: "/habitivity.jpeg", 
+      link: "https://habitivity.vercel.app/"
+    },
+    { 
       title: "Medisync", 
       tech: ["Hyperledger Fabric", "React.js", "Node.js"], 
       desc: "MediSync is a blockchain-based platform for secure and transparent pharmaceutical supply chains.",
