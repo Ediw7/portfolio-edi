@@ -6,28 +6,75 @@ import { ChevronDown, Briefcase } from "lucide-react";
 
 const experiences = [
   {
-    id: 1,
-    company: "Universitas Diponegoro",
-    logo: "/undip.png", 
-    role: "Mobile Programming Lab Assistant",
-    period: "2025",
+    id: 101,
+    company: "Mitra Transformasi Digital",
+    logo: "/mitral.webp", 
+    role: "ERP Developer Intern",
+    period: "2024",
     points: [
-      "Mentored students in mobile application development practices.",
-      "Assisted in debugging and testing Android-based applications."
+      "Developed an ERP invoicing system using Odoo.",
+      "Customized and integrated user interfaces using React.js.",
+      "Improved invoicing workflows and supported business process efficiency."
     ],
-    tech: ["Android", "React Native", "Debugging"]
+    tech: ["Odoo", "React.js", "ERP"]
   },
   {
-    id: 2,
-    company: "Universitas Diponegoro",
-    logo: "/undip.png", 
-    role: "Digital Systems Lab Assistant",
-    period: "2024 - 2025",
+    id: 102,
+    company: "Indivara Group",
+    logo: "/indivara.webp", 
+    role: "Java Developer Training (JDT) Bootcamp",
+    period: "2024",
     points: [
-      "Assisted lecturers in conducting digital systems practicums.",
-      "Guided students in using logic devices and circuit analysis."
+      "Participated in full-stack software development training (design, development, testing, deployment).",
+      "Designed system specifications, modeled business flows, and built PostgreSQL database architectures.",
+      "Developed backend using Java/Spring Boot, and integrated REST APIs with React.js frontend.",
+      "Executed QA processes including Automation Testing and Unit Testing using JUnit."
     ],
-    tech: ["Logic Gates", "Circuit Analysis", "Teaching"]
+    tech: ["Java", "Spring Boot", "React.js", "PostgreSQL", "QA"]
+  },
+  {
+    id: 1,
+    company: "Universitas Diponegoro",
+    logo: "/undip.webp", 
+    role: "Laboratory Assistant & Coordinator",
+    period: "2024 - 2025",
+    roles: [
+      {
+        title: "Mobile Programming Lab Assistant",
+        period: "2025",
+        points: [
+          "Mentored students in mobile application development practices.",
+          "Assisted in debugging and testing Android-based applications."
+        ]
+      },
+      {
+        title: "Digital Systems Lab Assistant",
+        period: "2024 - 2025",
+        points: [
+          "Assisted lecturers in conducting digital systems practicums.",
+          "Guided students in using logic devices and circuit analysis."
+        ]
+      },
+      {
+        title: "Practicum Coordinator for Automation Control Eng.",
+        period: "2024",
+        points: [
+          "Assisted lecturers in organizing and managing practicum activities.",
+          "Coordinated practicum administration and laboratory assistants assignment.",
+          "Guided and supported students during practicum sessions."
+        ]
+      },
+      {
+        title: "Microprocessor Interface Laboratory Assistant",
+        period: "2024",
+        points: [
+          "Assisted students in learning and using Nuvoton microcontroller platforms.",
+          "Supported laboratory activities related to microprocessor interfacing and embedded systems.",
+          "Helped students troubleshoot and understand hardware and programming concepts."
+        ]
+      }
+    ],
+    tech: ["Android", "React Native", "Logic Gates", "Circuit Analysis", "Coordination", "Nuvoton", "Embedded Systems", "Teaching"]
   },
   {
     id: 3,
@@ -45,7 +92,7 @@ const experiences = [
   {
     id: 4,
     company: "Higenncy",
-    logo: "/higen.jpeg", 
+    logo: "/higen.webp", 
     role: "Graphic Design Intern",
     period: "2023", 
     points: [
@@ -57,7 +104,7 @@ const experiences = [
   {
     id: 5,
     company: "Higenncy (Ministry of Finance Project)",
-    logo: "/higen.jpeg", 
+    logo: "/higen.webp", 
     role: "Email Marketing Design Intern",
     period: "2023",
     points: [
@@ -69,7 +116,7 @@ const experiences = [
   {
     id: 6,
     company: "PT Digital Investa Indonesia",
-    logo: "/digi.png", 
+    logo: "/digi.webp", 
     role: "Graphic Design Intern",
     period: "2022",
     points: [
@@ -185,14 +232,32 @@ export default function Experience() {
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                                     <div className="md:col-span-2">
                                         <h4 className="text-xs font-bold uppercase tracking-widest text-black/30 dark:text-white/30 mb-4">Key Responsibilities</h4>
-                                        <ul className="space-y-3">
-                                          {exp.points.map((point, idx) => (
-                                            <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-black/70 dark:text-white/70 leading-relaxed">
-                                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-black/50 dark:bg-white/50 flex-shrink-0" />
-                                              {point}
-                                            </li>
-                                          ))}
-                                        </ul>
+                                        {exp.roles ? (
+                                          <div className="space-y-6">
+                                            {exp.roles.map((role: any, idx: number) => (
+                                              <div key={idx}>
+                                                <h5 className="text-sm font-bold text-black/80 dark:text-white/80 mb-2">{role.title} <span className="font-normal text-xs opacity-60">({role.period})</span></h5>
+                                                <ul className="space-y-2">
+                                                  {role.points.map((p: string, i: number) => (
+                                                    <li key={i} className="flex items-start gap-3 text-sm md:text-base text-black/70 dark:text-white/70 leading-relaxed">
+                                                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-black/50 dark:bg-white/50 flex-shrink-0" />
+                                                      {p}
+                                                    </li>
+                                                  ))}
+                                                </ul>
+                                              </div>
+                                            ))}
+                                          </div>
+                                        ) : (
+                                          <ul className="space-y-3">
+                                            {exp.points?.map((point: string, idx: number) => (
+                                              <li key={idx} className="flex items-start gap-3 text-sm md:text-base text-black/70 dark:text-white/70 leading-relaxed">
+                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-black/50 dark:bg-white/50 flex-shrink-0" />
+                                                {point}
+                                              </li>
+                                            ))}
+                                          </ul>
+                                        )}
                                     </div>
                                     <div>
                                         <h4 className="text-xs font-bold uppercase tracking-widest text-black/30 dark:text-white/30 mb-4">Technologies</h4>

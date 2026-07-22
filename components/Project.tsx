@@ -6,53 +6,67 @@ import Image from "next/image";
 
 export default function Projects() {
   const projects = [
-    { 
-      title: "Habitivity", 
-      tech: ["Next.js", "Tailwind CSS", "MongoDB"], 
+    {
+      title: "Agenin",
+      tech: ["Spring Boot", "React.js", "PostgreSQL", "Docker"],
+      desc: "Agenin is a modern, lightweight web application designed for seamless performance and optimal user experience.",
+      image: "/agenin.webp",
+      link: "https://ageninlite.vercel.app/login"
+    },
+    {
+      title: "Edi Accounting",
+      tech: ["Python", "Odoo", "PostgreSQL", "React.js"],
+      desc: "Edi Accounting is a comprehensive financial dashboard providing real-time insights, invoicing, and secure data management.",
+      image: "/ediAccounting.webp",
+      link: "https://github.com/Ediw7/idn-erp-backend"
+    },
+    {
+      title: "Habitivity",
+      tech: ["Next.js", "Tailwind CSS", "MongoDB"],
       desc: "Habitivity is a gamified Life Operating System that transforms daily routines into a high-value digital asset collection using AI and RPG elements.",
-      image: "/habitivity.jpeg", 
+      image: "/habitivity.webp",
       link: "https://habitivity.vercel.app/"
     },
-    { 
-      title: "Medisync", 
-      tech: ["Hyperledger Fabric", "React.js", "Node.js"], 
+    {
+      title: "Medisync",
+      tech: ["Hyperledger Fabric", "React.js", "Node.js"],
       desc: "MediSync is a blockchain-based platform for secure and transparent pharmaceutical supply chains.",
-      image: "/medisync.png", 
+      image: "/medisync.webp",
       link: "https://github.com/Ediw7/medisync-project"
     },
-    { 
-      title: "ResQ", 
-      tech: ["Next.js", "MongoDb"], 
+    {
+      title: "ResQ",
+      tech: ["Next.js", "MongoDb"],
       desc: "ResQ is a community-driven disaster reporting platform that enables real-time information sharing and emergency coordination.",
-      image: "/resq.jpeg",
+      image: "/resq.webp",
       link: "https://res-q-neon-six.vercel.app/"
     },
-    { 
-      title: "Taniku", 
-      tech: ["React.js", "Supabase"], 
+    {
+      title: "Taniku",
+      tech: ["React.js", "Supabase"],
       desc: "Taniku is a digital platform connecting farmers and government agencies to support agricultural data, coordination, and services.",
-      image: "/taniku.jpg",
+      image: "/taniku.webp",
       link: "https://taniku.vercel.app/"
     },
-    { 
-      title: "River Clean", 
-      tech: ["React.js", "Supabase"], 
+    {
+      title: "River Clean",
+      tech: ["React.js", "Supabase"],
       desc: "RiverClean is a website for campaigns and education on river conservation and environmental awareness.",
-      image: "/river.jpg",
+      image: "/river.webp",
       link: "https://river-clean.vercel.app/"
     },
-     { 
-      title: "Biofun", 
-      tech: ["React.js"], 
+    {
+      title: "Biofun",
+      tech: ["React.js"],
       desc: "BIOFUN is an interactive e-learning platform designed to make biology learning engaging and accessible.",
-      image: "/biofun.png",
+      image: "/biofun.webp",
       link: "https://biofun.vercel.app/"
     },
-    { 
-      title: "Kampung Kreatif", 
-      tech: ["HTML", "CSS", "JS"], 
+    {
+      title: "Kampung Kreatif",
+      tech: ["HTML", "CSS", "JS"],
       desc: "KAMPUNG KREATIF is a promotional and information website showcasing local tourism villages and cultural experiences.",
-      image: "/kampungKreatif.jpg",
+      image: "/kampungKreatif.webp",
       link: "https://kampungkreatif.netlify.app/"
     },
   ];
@@ -60,10 +74,10 @@ export default function Projects() {
   return (
     /* 1. LAYER WARNA: Full Width ke pinggir layar */
     <section id="projects" className="w-full bg-white dark:bg-black transition-colors duration-300">
-      
+
       {/* 2. LAYER KONTEN: Membatasi lebar agar tetap di tengah dan tidak ketarik ke pojok */}
       <div className="py-32 px-4 md:px-8 max-w-7xl mx-auto text-black dark:text-white">
-        
+
         {/* HEADER SECTION */}
         <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between border-b border-black/10 dark:border-white/10 pb-8">
           <div>
@@ -87,7 +101,7 @@ export default function Projects() {
 
         {/* SEE DESIGN PROJECT BUTTON */}
         <div className="mt-20 flex justify-center">
-          <a 
+          <a
             href="https://drive.google.com/file/d/16_M-3ucgVcpepbBtYMI7neLaeBInIuJ5/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
@@ -112,7 +126,7 @@ export default function Projects() {
 
 function ProjectCard({ title, tech, desc, image, link }: any) {
   return (
-    <motion.a 
+    <motion.a
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -134,24 +148,24 @@ function ProjectCard({ title, tech, desc, image, link }: any) {
                         opacity-100 md:opacity-0 md:translate-y-2 
                         md:group-hover:opacity-100 md:group-hover:translate-y-0 
                         transition-all duration-500 z-10 shadow-lg">
-           <ArrowUpRight className="w-4 h-4 text-black dark:text-white" />
+          <ArrowUpRight className="w-4 h-4 text-black dark:text-white" />
         </div>
       </div>
 
       <div className="p-8 flex flex-col flex-grow text-black dark:text-white">
         <div className="mb-6">
-            <h3 className="text-2xl font-bold mb-3 tracking-tight leading-tight group-hover:underline decoration-1 underline-offset-4">
+          <h3 className="text-2xl font-bold mb-3 tracking-tight leading-tight group-hover:underline decoration-1 underline-offset-4">
             {title}
-            </h3>
-            <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed line-clamp-3 font-medium">
+          </h3>
+          <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed line-clamp-3 font-medium">
             {desc}
-            </p>
+          </p>
         </div>
 
         <div className="mt-auto flex flex-wrap gap-2">
           {tech.map((item: string, idx: number) => (
-            <span 
-              key={idx} 
+            <span
+              key={idx}
               className="px-3 py-1.5 text-[10px] uppercase tracking-widest font-bold 
                          text-black/70 dark:text-white/70 
                          border border-black/10 dark:border-white/10 rounded-lg

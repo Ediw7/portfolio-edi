@@ -111,7 +111,7 @@ export default function Navbar() {
           {/* KANAN: CV & HAMBURGER */}
           <div className="flex items-center gap-3">
             <a 
-              href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" 
+              href="https://drive.google.com/drive/folders/1ZYc3zEcLCN49SNtgpf9ms7TzM2h9m5SO?usp=drive_link" 
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:block text-[9px] font-bold text-white dark:text-black bg-black dark:bg-white px-5 py-1.5 rounded-full hover:opacity-80 transition-all duration-300 tracking-widest uppercase"
@@ -180,7 +180,7 @@ export default function Navbar() {
                 <div className="mb-6 space-y-6">
                   <div className="h-[1px] w-full bg-black/5 dark:bg-white/5" />
                   <a 
-                    href="https://drive.google.com/drive/folders/17-CuYQHDdHo6lf9ZjQv8CMtEcvTVXorT?usp=sharing" 
+                    href="https://drive.google.com/drive/folders/1ZYc3zEcLCN49SNtgpf9ms7TzM2h9m5SO?usp=drive_link" 
                     target="_blank"
                     className="flex flex-col gap-3 group"
                   >

@@ -17,11 +17,16 @@ const StackIconsRow1 = memo(() => (
       <TechImage src="/type1.png" alt="TypeScript" />
       <TechImage src="/node.png" alt="Node.js" />
       <TechImage src="/java.png" alt="Java" />
+      <TechImage src="/spring.svg" alt="Spring Boot" />
+      <TechImage src="/docker.svg" alt="Docker" />
   </div>
 ));
 
 const StackIconsRow2 = memo(() => (
   <div className="flex items-center gap-12 mx-4"> 
+      <TechImage src="/postgresql.svg" alt="PostgreSQL" />
+      <TechText label="Katalon" />
+      <TechText label="Playwright" />
       <TechImage src="/mongo.png" alt="MongoDB" />
       <TechImage src="/mysql.png" alt="MySql" />
       <TechImage src="/tail.png" alt="Tailwind" />
@@ -77,7 +82,7 @@ export default function About() {
                 I&apos;m <strong className="text-black dark:text-white font-medium">Edi Wicoro</strong>, a Computer Engineering Undergraduate at Universitas Diponegoro.
               </p>
               <p>
-                Specializing in <span className="underline decoration-1 underline-offset-4">Fullstack Development</span> & <span className="underline decoration-1 underline-offset-4">Blockchain</span>.
+                Specializing in <span className="underline decoration-1 underline-offset-4">QA Automation</span>, <span className="underline decoration-1 underline-offset-4">Blockchain</span>, & <span className="underline decoration-1 underline-offset-4">Software Development</span>.
               </p>
               
               <div className="grid grid-cols-2 gap-8 mt-8 pl-6 border-l-2 border-red-600">
@@ -210,6 +215,14 @@ function TechImage({ src, alt }: { src: string, alt: string }) {
                 className="object-contain brightness-0 dark:invert opacity-60 dark:opacity-80 transition-opacity" 
                 loading="lazy"
             />
+        </div>
+    )
+}
+
+function TechText({ label }: { label: string }) {
+    return (
+        <div className="relative w-max h-16 md:h-24 flex items-center justify-center flex-shrink-0"> 
+            <span className="text-xl md:text-2xl font-bold tracking-widest text-black/40 dark:text-white/40">{label}</span>
         </div>
     )
 }

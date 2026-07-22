@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MoveRight } from "lucide-react"; 
 
 export default function Hero() {
-  const words = ["Fullstack Developer", "Blockchain Enthusiast", "Graphic Designer"];
+  const words = ["Software Developer", "QA Automation Engineer", "Blockchain Enthusiast"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -128,7 +128,7 @@ export default function Hero() {
           <div className="relative group w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80">
             <div className="w-full h-full rounded-full border-2 border-black/10 dark:border-white/10 shadow-xl overflow-hidden relative bg-neutral-100 dark:bg-neutral-900">
                 <Image 
-                  src="/ediC.png" 
+                  src="/edi.webp" 
                   alt="Edi Wicoro"
                   fill
                   priority // Memastikan dimuat lebih awal
